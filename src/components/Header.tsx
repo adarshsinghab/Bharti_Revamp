@@ -102,7 +102,7 @@ export default function Header() {
   return (
     <>
       {/* Top Utility Nav */}
-      <div className="bg-[#FCFAF7] text-[#5A5A5A] py-2.5 px-6 border-b border-[#EAEAEA] text-[11px] font-montserrat font-semibold tracking-wider relative z-50">
+      <div className="hidden lg:block bg-[#FCFAF7] text-[#5A5A5A] py-2.5 px-6 border-b border-[#EAEAEA] text-[11px] font-montserrat font-semibold tracking-wider relative z-50">
         <div className="max-w-[1600px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-1">
             <a href="https://budurg.bhartiuniversity.org/" target="_blank" rel="noopener noreferrer" className="hover:text-burgundy transition-colors flex items-center gap-1 text-[#5A5A5A]">
@@ -133,7 +133,7 @@ export default function Header() {
         className={`fixed left-0 right-0 ${activeDropdown ? "z-[60]" : "z-40"} transition-all duration-500 border-b ${
           scrolled
             ? "top-0 bg-white/95 backdrop-blur-xl border-[#EAEAEA]/80 shadow-sm py-3 text-[#121212]"
-            : "top-[38px] bg-gradient-to-b from-[#0f0a0c] to-black/80 backdrop-blur-md border-white/10 py-4 text-white"
+            : "top-0 lg:top-[38px] bg-gradient-to-b from-[#0f0a0c] to-black/80 backdrop-blur-md border-white/10 py-4 text-white"
         }`}
       >
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex justify-between items-center">
@@ -402,7 +402,7 @@ export default function Header() {
       {/* Announcement Ribbon */}
       <div
         className={`fixed left-0 right-0 z-50 transition-all duration-500 bg-[#FAF8F5] border-b border-[#EAEAEA] py-3.5 shadow-sm ${
-          scrolled ? "top-[64px]" : "top-[118px]"
+          scrolled ? "top-[64px]" : "top-[80px] lg:top-[118px]"
         }`}
       >
         <div className="max-w-[1600px] mx-auto px-6 overflow-hidden flex items-center gap-4">

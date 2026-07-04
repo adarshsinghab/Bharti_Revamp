@@ -1,26 +1,178 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  --font-sans: var(--font-outfit), sans-serif;
+  --font-outfit: var(--font-outfit), sans-serif;
+  --font-montserrat: var(--font-montserrat), sans-serif;
+  
+  --color-burgundy: #f60401;
+  --color-burgundy-light: #ff2a26;
+  --color-burgundy-dark: #b80300;
+  --color-gold: #FFD700;
+  --color-gold-dark: #E5A900;
+  --color-gold-light: #FFF59D;
+  --color-near-black: #121212;
+  --color-warm-white: #FAF8F5;
+  --color-soft-neutral: #FCFAF7;
+  --color-border-gray: #EAEAEA;
+  
+  --animate-marquee: marquee 35s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 35s linear infinite;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes marquee-reverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+html {
+  scroll-behavior: auto; /* Required for Lenis smooth scroll */
 }
+
+body {
+  background-color: #FFFFFF;
+  color: #121212;
+  overflow-x: hidden;
+}
+
+/* Custom Lenis Smooth Scroll Styles */
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Premium Visual Selection */
+::selection {
+  background-color: rgba(91, 14, 45, 0.1);
+  color: #5b0e2d;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E5E5E5;
+  border-radius: 4px;
+  border: 2px solid #FFFFFF;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+/* Cinematic Parallax Helpers */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-img {
+  position: absolute;
+  top: -15%;
+  left: 0;
+  width: 100%;
+  height: 130%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* Custom Utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+.clip-path-circle {
+  clip-path: circle(0% at 50% 50%);
+}
+
+/* Base typography utilities */
+.editorial-title {
+  font-family: var(--font-outfit);
+  letter-spacing: -0.02em;
+}
+
+.editorial-subtitle {
+  font-family: var(--font-montserrat);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Cinematic 3D Depth & Shadow Utilities */
+.depth-card {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.6s ease;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px);
+  will-change: transform, box-shadow;
+}
+
+.depth-card:hover {
+  transform: perspective(1000px) translateY(-6px) translateZ(15px) rotateX(2deg) rotateY(-1deg);
+  box-shadow: 
+    0 25px 50px -12px rgba(91, 14, 45, 0.12),
+    0 15px 30px -15px rgba(0, 0, 0, 0.2),
+    0 0 40px 0 rgba(212, 175, 55, 0.05);
+}
+
+.cinematic-shadow {
+  box-shadow: 
+    0 20px 40px -10px rgba(0, 0, 0, 0.3),
+    0 0 50px -10px rgba(91, 14, 45, 0.15);
+}
+
+.glass-premium {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.glass-premium-dark {
+  background: rgba(18, 18, 18, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* 3D Cinematic Drop Shadow & Text Pop Utilities */
+.text-shadow-pop {
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.65), 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.text-shadow-gold {
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.55), 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.text-shadow-subtle {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.pop-shadow {
+  filter: drop-shadow(0 10px 20px rgba(246, 4, 1, 0.25)) drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+}
+
+.glow-gold {
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
+  border-color: rgba(255, 215, 0, 0.4) !important;
+}
+
+

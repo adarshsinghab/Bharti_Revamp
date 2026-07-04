@@ -14,7 +14,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       smoothWheel: true,
       smoothTouch: true,
       syncTouch: true,
-    });
+    } as any);
 
     let rafId: number;
     function raf(time: number) {

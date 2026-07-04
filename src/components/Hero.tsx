@@ -92,7 +92,7 @@ export default function Hero({ onVideoLoaded }: { onVideoLoaded?: () => void }) 
               setVideoError(true);
               onVideoLoaded?.();
             }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full object-cover scale-[1.03] opacity-[0.45] transition-opacity duration-1000"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full object-cover scale-[1.03] opacity-[0.85] transition-opacity duration-1000"
           >
             <source
               src="/campus.mp4"

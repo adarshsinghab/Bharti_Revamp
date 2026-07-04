@@ -430,46 +430,53 @@ export default function Header() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 bg-[#0F0A0C]/98 backdrop-blur-lg flex flex-col p-8"
           >
-            <div className="flex justify-between items-center mb-12">
-              <div className="flex items-center gap-3 font-outfit font-extrabold text-xl text-white tracking-tight">
-                <img src="/img/logo_1.png" alt="Bharti Vishwavidyalaya" className="h-10 w-auto object-contain" />
-                <span>BHARTI <span className="text-[#d4af37]">VISHWAVIDYALAYA</span></span>
+            <div className="flex justify-between items-center mb-10">
+              <div className="flex items-center">
+                <img src="/img/logo_1.png" alt="Bharti Vishwavidyalaya" className="h-9 w-auto object-contain" />
               </div>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-white hover:text-[#d4af37] p-2"
+                className="text-white hover:text-[#d4af37] p-2 rounded-full hover:bg-white/5 transition-colors"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
-            <nav className="flex flex-col gap-6 font-outfit text-xl font-bold text-white overflow-y-auto max-h-[70vh] pr-4">
-              <a href="#" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#d4af37] transition-colors">
+            <nav className="flex flex-col gap-5 font-outfit text-lg font-bold text-white overflow-y-auto max-h-[60vh] pr-2 scrollbar-none">
+              <a href="#" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#d4af37] transition-colors py-1">
                 HOME
               </a>
-              <div>
-                <span className="text-[#d4af37] text-xs font-montserrat font-bold tracking-widest block mb-2">ABOUT THE VISHWAVIDYALAYA</span>
-                <div className="grid grid-cols-1 gap-2 pl-4 text-sm font-medium text-white/70">
+              
+              <div className="border-t border-white/5 pt-4">
+                <span className="text-[#d4af37] text-[10px] font-montserrat font-bold tracking-widest block mb-2 uppercase">ABOUT THE VISHWAVIDYALAYA</span>
+                <div className="grid grid-cols-1 gap-1.5 pl-3 text-sm font-medium text-white/70">
                   <a href="https://bhartiuniversity.org/about_us.php" target="_blank" className="hover:text-white transition-colors py-1">About BU</a>
                   <a href="https://bhartiuniversity.org/vision-mission.php" target="_blank" className="hover:text-white transition-colors py-1">Vision & Mission</a>
                   <a href="https://bhartiuniversity.org/bhartiIMG/Administration.pdf" target="_blank" className="hover:text-white transition-colors py-1">Administration Portal</a>
                   <a href="https://bhartiuniversity.org/fee-structure.php" className="hover:text-white transition-colors py-1">Fee Structure</a>
                 </div>
               </div>
-              <div>
-                <span className="text-[#d4af37] text-xs font-montserrat font-bold tracking-widest block mb-2">RESEARCH & NCRISD</span>
-                <div className="grid grid-cols-1 gap-2 pl-4 text-sm font-medium text-white/70">
+
+              <div className="border-t border-white/5 pt-4">
+                <span className="text-[#d4af37] text-[10px] font-montserrat font-bold tracking-widest block mb-2 uppercase">RESEARCH & NCRISD</span>
+                <div className="grid grid-cols-1 gap-1.5 pl-3 text-sm font-medium text-white/70">
                   <a href="https://bhartiuniversity.org/bhartiIMG/1_Journal%20Publication.pdf" target="_blank" className="hover:text-white transition-colors py-1">Publications List</a>
                   <a href="https://bhartiuniversity.org/bhartiIMG/3_Patents.pdf" target="_blank" className="hover:text-white transition-colors py-1">Patents Directory</a>
                   <a href="https://bhartiuniversity.org/bhartiIMG/p17809202602512.pdf" target="_blank" className="hover:text-white transition-colors py-1">NCRISD-2026 Brochure</a>
                 </div>
               </div>
-              <a href="#placements" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#d4af37] transition-colors">
-                PLACEMENTS
-              </a>
-              <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#d4af37] transition-colors">
-                CONTACT US
-              </a>
+
+              <div className="border-t border-white/5 pt-4">
+                <a href="#placements" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#d4af37] transition-colors block py-1">
+                  PLACEMENTS
+                </a>
+              </div>
+
+              <div className="border-t border-white/5 pt-4">
+                <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#d4af37] transition-colors block py-1">
+                  CONTACT US
+                </a>
+              </div>
             </nav>
 
             <div className="mt-auto flex flex-col gap-4">

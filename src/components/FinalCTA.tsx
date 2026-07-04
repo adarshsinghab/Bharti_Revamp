@@ -26,7 +26,7 @@ export default function FinalCTA() {
             ADMISSIONS OPEN FOR 2026-27
           </span>
 
-          <h2 className="font-outfit text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight max-w-4xl mb-8 leading-[1.1] text-balance text-[#121212]">
+          <h2 className="font-outfit text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight max-w-4xl mb-8 leading-[1.1] text-balance text-[#121212]">
             Begin your story at a <span className="text-[#d4af37] italic font-serif font-normal">world class</span> vishwavidyalaya
           </h2>
 

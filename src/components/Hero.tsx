@@ -147,7 +147,7 @@ export default function Hero({ onVideoLoaded }: { onVideoLoaded?: () => void }) 
             </motion.div>
 
             {/* Title */}
-            <h1 className="font-outfit text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.05] max-w-3xl mb-5 text-shadow-pop">
+            <h1 className="font-outfit text-[28px] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.05] max-w-3xl mb-5 text-shadow-pop">
               {heroSlides[currentSlide].title.split(" ").map((word, idx) => (
                 <span key={`${currentSlide}-${idx}`} className="inline-block overflow-hidden mr-3">
                   <motion.span

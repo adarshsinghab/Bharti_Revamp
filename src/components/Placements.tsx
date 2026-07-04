@@ -157,35 +157,35 @@ export default function Placements() {
                   {/* 2022: 78% */}
                   <div className="flex flex-col items-center flex-1 h-full justify-end relative z-10">
                     <span className="text-[10px] font-bold text-gray-500 mb-1">78%</span>
-                    <div className="w-10 sm:w-12 bg-slate-200 rounded-t-md chart-bar" data-height="78px" style={{ height: "0px" }} />
+                    <div className="w-7 sm:w-10 md:w-12 bg-slate-200 rounded-t-md chart-bar" data-height="78px" style={{ height: "0px" }} />
                     <span className="text-[10px] text-gray-500 mt-2 block h-[20px] leading-[20px]">2022</span>
                   </div>
 
                   {/* 2023: 84% */}
                   <div className="flex flex-col items-center flex-1 h-full justify-end relative z-10">
                     <span className="text-[10px] font-bold text-gray-400 mb-1">84%</span>
-                    <div className="w-10 sm:w-12 bg-slate-400 rounded-t-md chart-bar" data-height="84px" style={{ height: "0px" }} />
+                    <div className="w-7 sm:w-10 md:w-12 bg-slate-400 rounded-t-md chart-bar" data-height="84px" style={{ height: "0px" }} />
                     <span className="text-[10px] text-gray-500 mt-2 block h-[20px] leading-[20px]">2023</span>
                   </div>
 
                   {/* 2024: 89% */}
                   <div className="flex flex-col items-center flex-1 h-full justify-end relative z-10">
                     <span className="text-[10px] font-bold text-[#c5a059] mb-1">89%</span>
-                    <div className="w-10 sm:w-12 bg-[#c5a059] rounded-t-md chart-bar" data-height="89px" style={{ height: "0px" }} />
+                    <div className="w-7 sm:w-10 md:w-12 bg-[#c5a059] rounded-t-md chart-bar" data-height="89px" style={{ height: "0px" }} />
                     <span className="text-[10px] text-gray-500 mt-2 block h-[20px] leading-[20px]">2024</span>
                   </div>
 
                   {/* 2025: 92% */}
                   <div className="flex flex-col items-center flex-1 h-full justify-end relative z-10">
                     <span className="text-[10px] font-bold text-[#f60401] mb-1">92%</span>
-                    <div className="w-10 sm:w-12 bg-[#f60401] rounded-t-md chart-bar" data-height="92px" style={{ height: "0px" }} />
+                    <div className="w-7 sm:w-10 md:w-12 bg-[#f60401] rounded-t-md chart-bar" data-height="92px" style={{ height: "0px" }} />
                     <span className="text-[10px] text-gray-500 mt-2 block h-[20px] leading-[20px]">2025</span>
                   </div>
 
                   {/* 2026: 95% */}
                   <div className="flex flex-col items-center flex-1 h-full justify-end relative z-10">
                     <span className="text-[10px] font-bold text-[#c5a059] mb-1">95%</span>
-                    <div className="w-10 sm:w-12 bg-[#c5a059] rounded-t-md chart-bar" data-height="95px" style={{ height: "0px" }} />
+                    <div className="w-7 sm:w-10 md:w-12 bg-[#c5a059] rounded-t-md chart-bar" data-height="95px" style={{ height: "0px" }} />
                     <span className="text-[10px] text-gray-500 mt-2 block h-[20px] leading-[20px]">2026 (Est)</span>
                   </div>
                 </div>

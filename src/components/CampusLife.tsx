@@ -34,15 +34,15 @@ export default function CampusLife() {
     offset: ["start end", "end start"]
   });
 
-  const img1Y = useTransform(scrollYProgress, [0, 1], [-60, 60]);
-  const img2Y = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  const img3Y = useTransform(scrollYProgress, [0, 1], [-80, 80]);
-  const img4Y = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const img1Y = useTransform(scrollYProgress, [0, 1], [-25, 25]);
+  const img2Y = useTransform(scrollYProgress, [0, 1], [20, -20]);
+  const img3Y = useTransform(scrollYProgress, [0, 1], [-30, 30]);
+  const img4Y = useTransform(scrollYProgress, [0, 1], [15, -15]);
 
-  const rotate1 = useTransform(scrollYProgress, [0, 1], [-3, 3]);
-  const rotate2 = useTransform(scrollYProgress, [0, 1], [4, -4]);
-  const rotate3 = useTransform(scrollYProgress, [0, 1], [-5, 5]);
-  const rotate4 = useTransform(scrollYProgress, [0, 1], [2, -2]);
+  const rotate1 = useTransform(scrollYProgress, [0, 1], [-1.5, 1.5]);
+  const rotate2 = useTransform(scrollYProgress, [0, 1], [2, -2]);
+  const rotate3 = useTransform(scrollYProgress, [0, 1], [-2.5, 2.5]);
+  const rotate4 = useTransform(scrollYProgress, [0, 1], [1, -1]);
 
   return (
     <section ref={sectionRef} className="py-14 md:py-18 bg-[#f8fafc] border-b border-[#E2E8F0] overflow-hidden" id="campus">

@@ -82,7 +82,7 @@ export default function IntroLoader({ onComplete, ready }: { onComplete: () => v
               <img
                 src="/img/logo.png"
                 alt="Bharti Vishwavidyalaya"
-                className="w-36 sm:w-44 h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.05)]"
+                className="w-44 sm:w-52 h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.05)]"
               />
             </motion.div>
 

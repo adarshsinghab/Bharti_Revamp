@@ -9,7 +9,7 @@ export default function SmoothScroll({ children, loading }: { children: React.Re
   useEffect(() => {
     // Initialize Lenis smooth scrolling
     const lenis = new Lenis({
-      duration: 3,
+      duration: 2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",

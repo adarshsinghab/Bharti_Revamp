@@ -41,7 +41,7 @@ export default function WhyBharti() {
           <div className="lg:col-span-6 relative overflow-hidden rounded-2xl group shadow-lg h-[380px] bg-slate-50 depth-card">
             <div className="absolute inset-0 bg-burgundy/5 z-10 transition-colors group-hover:bg-transparent duration-500" />
             <motion.img
-              src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1000"
+              src="/img/ou930t.png"
               alt="Bharti Vishwavidyalaya Architecture"
               className="absolute top-[-15%] left-0 w-full h-[130%] object-cover scale-105 group-hover:scale-110 transition-transform duration-[2000ms] ease-out"
               style={{ y: imageY }}

@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ShieldCheck, Award } from "lucide-react";
+import Hls from "hls.js";
 
 const heroSlides = [
   {
@@ -29,6 +30,7 @@ export default function Hero({ onVideoLoaded }: { onVideoLoaded?: () => void }) 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [videoError, setVideoError] = useState(false);
+  const [videoPlayable, setVideoPlayable] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -56,16 +58,60 @@ export default function Hero({ onVideoLoaded }: { onVideoLoaded?: () => void }) 
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  // Initialize HLS streaming player with 5s chunk buffer sizing
   useEffect(() => {
-    if (videoError) {
-      onVideoLoaded?.();
-    }
-  }, [videoError, onVideoLoaded]);
+    const video = videoRef.current;
+    if (!video) return;
 
-  useEffect(() => {
-    if (videoRef.current && videoRef.current.readyState >= 3) {
+    const streamUrl = "/video/playlist.m3u8";
+    let hls: Hls;
+
+    if (Hls.isSupported()) {
+      hls = new Hls({
+        maxMaxBufferLength: 10, // Buffer max 10 seconds ahead
+        maxBufferLength: 5,     // Buffer 5 seconds at a time to load in a speedy way
+        enableWorker: true,
+        lowLatencyMode: true,
+      });
+      hls.loadSource(streamUrl);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        video.play().catch(() => {});
+      });
+      hls.on(Hls.Events.FRAG_BUFFERED, () => {
+        setVideoPlayable(true);
+        onVideoLoaded?.();
+      });
+      hls.on(Hls.Events.ERROR, (event, data) => {
+        if (data.fatal) {
+          setVideoError(true);
+          onVideoLoaded?.();
+        }
+      });
+    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+      // Native fallback for Safari
+      video.src = streamUrl;
+      video.addEventListener("loadedmetadata", () => {
+        video.play().catch(() => {});
+      });
+      video.addEventListener("canplay", () => {
+        setVideoPlayable(true);
+        onVideoLoaded?.();
+      });
+      video.addEventListener("error", () => {
+        setVideoError(true);
+        onVideoLoaded?.();
+      });
+    } else {
+      setVideoError(true);
       onVideoLoaded?.();
     }
+
+    return () => {
+      if (hls) {
+        hls.destroy();
+      }
+    };
   }, [onVideoLoaded]);
 
   return (
@@ -87,18 +133,12 @@ export default function Hero({ onVideoLoaded }: { onVideoLoaded?: () => void }) 
             muted
             loop
             playsInline
-            onLoadedData={onVideoLoaded}
             onError={() => {
               setVideoError(true);
               onVideoLoaded?.();
             }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full object-cover scale-[1.03] opacity-[0.85] transition-opacity duration-1000"
-          >
-            <source
-              src="/campus.mp4"
-              type="video/mp4"
-            />
-          </video>
+            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full object-cover scale-[1.03] transition-opacity duration-[1500ms] ${videoPlayable ? "opacity-[0.45]" : "opacity-0"}`}
+          />
         ) : (
           <AnimatePresence mode="wait">
             <motion.div
@@ -186,7 +226,7 @@ export default function Hero({ onVideoLoaded }: { onVideoLoaded?: () => void }) 
               className="flex flex-wrap gap-3 items-center"
             >
               <a
-                href="https://bhartiuniversity.org/fee-structure.php"
+                href="/fee-structure"
                 className="bg-burgundy hover:bg-burgundy-light text-white border border-burgundy hover:border-burgundy-light font-montserrat text-[10px] font-bold tracking-widest px-6 py-3.5 rounded-full shadow-lg hover:shadow-burgundy/30 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2 group cursor-pointer"
               >
                 APPLY FOR ADMISSIONS <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

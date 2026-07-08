@@ -7,25 +7,25 @@ const publications = [
   {
     title: "Journal Publications",
     description: "Browse the extensive list of academic research articles published by our scholars across national & international journals.",
-    link: "https://bhartiuniversity.org/bhartiIMG/1_Journal%20Publication.pdf",
+    link: "/journal-publication",
     icon: BookOpen
   },
   {
     title: "Books & Monographs",
     description: "Discover books and academic chapters authored by our faculty members, setting standards in diverse domains.",
-    link: "https://bhartiuniversity.org/bhartiIMG/2_Books%20Publication.pdf",
+    link: "/books-publication",
     icon: FileText
   },
   {
     title: "Patents & Inventions",
     description: "Review patented technologies filed and published by Bharti research departments in science, engineering and pharmacy.",
-    link: "https://bhartiuniversity.org/bhartiIMG/3_Patents.pdf",
+    link: "/patents-filed",
     icon: FileCode
   },
   {
     title: "Seminars, Conferences & Workshops",
     description: "A chronological directory of international webinars, national workshops, and scientific panels held at our campus.",
-    link: "https://bhartiuniversity.org/bhartiIMG/4_SEMINAR,%20CONFERENCE,%20WORKSHOP,%20WEBINAR.pdf",
+    link: "/seminars-conferences",
     icon: Radio
   }
 ];
@@ -80,9 +80,7 @@ export default function Research() {
             {/* Conference CTAs */}
             <div className="flex flex-col sm:flex-row gap-3">
               <a
-                href="https://bhartiuniversity.org/bhartiIMG/p17809202602512.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/conference-brochure"
                 className="bg-burgundy hover:bg-burgundy-light text-white font-montserrat text-[9px] font-bold tracking-widest px-5 py-3.5 rounded-full text-center shadow-sm transition-all duration-300 flex items-center justify-center gap-1.5 flex-1 cursor-pointer hover:shadow-burgundy/20"
               >
                 DOWNLOAD BROCHURE <ArrowRight className="w-3 h-3" />

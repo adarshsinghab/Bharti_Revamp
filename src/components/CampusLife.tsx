@@ -8,19 +8,19 @@ const activities = [
   {
     title: "National Cadet Corps (NCC) Cell",
     description: "Developing discipline, leadership, and national service among cadets through specialized camps, parades and state events.",
-    link: "https://bhartiuniversity.org/bhartiIMG/Anti%20Ragging%20Committee.pdf",
+    link: "/ncc",
     icon: ShieldCheck
   },
   {
     title: "National Service Scheme (NSS)",
     description: "Engaging students in rural development, blood donation drives, health camps, and local social-welfare programs.",
-    link: "https://bhartiuniversity.org/bhartiIMG/NSS%20Cell.pdf",
+    link: "/nss",
     icon: Heart
   },
   {
     title: "Social-Economically Disadvantaged Cell",
     description: "Supporting students from underprivileged backgrounds, securing scholarships, and ensuring academic accessibility.",
-    link: "https://bhartiuniversity.org/bhartiIMG/eoc.pdf",
+    link: "/sedg-cell",
     icon: Landmark
   }
 ];

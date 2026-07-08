@@ -5,21 +5,21 @@ import { MapPin, Phone, Mail } from "lucide-react";
 const links = {
   academics: [
     { name: "Programs Offered", href: "#programs" },
-    { name: "Academic Collaboration", href: "https://bhartiuniversity.org/bhartiIMG/AC.pdf" },
-    { name: "Library Infrastructure", href: "https://bhartiuniversity.org/bhartiIMG/Library.pdf" },
-    { name: "Academic Calendar", href: "https://bhartiuniversity.org/bhartiIMG/ACADEMIC%20CALENDER%20BV%202025%2026.pdf" }
+    { name: "Academic Collaboration", href: "/academic-collaboration" },
+    { name: "Library Infrastructure", href: "/library-facilities" },
+    { name: "Academic Calendar", href: "/academic-calendar" }
   ],
   governance: [
-    { name: "UGC ApprovalStatus", href: "https://bhartiuniversity.org/bhartiIMG/Ugcapproval.pdf" },
-    { name: "AICTE EOA 2025-26", href: "https://bhartiuniversity.org/bhartiIMG/AICTE%20EOA%20Report%202025-2026.pdf" },
-    { name: "BCI EOA 2025-26", href: "https://bhartiuniversity.org/bhartiIMG/bcid1965%20Bharti%20Vishwavidyalaya,%20Durg,%20Chhattisgarh.pdf" },
-    { name: "Shulk Nirdharan", href: "https://bhartiuniversity.org/bhartiIMG/shulk%20nirdharan%202025-26.pdf" }
+    { name: "UGC ApprovalStatus", href: "/ugc-approval" },
+    { name: "AICTE EOA 2025-26", href: "/aicte-eoa" },
+    { name: "BCI EOA 2025-26", href: "/bci-eoa" },
+    { name: "Shulk Nirdharan", href: "/shulk-nirdharan" }
   ],
   admissions: [
-    { name: "Admission Process", href: "https://bhartiuniversity.org/adminssion-process.php" },
-    { name: "Fee Structure", href: "https://bhartiuniversity.org/fee-structure.php" },
-    { name: "Eligibility Criteria", href: "https://bhartiuniversity.org/adminssion-process.php#eligibility" },
-    { name: "Refund Policy", href: "https://bhartiuniversity.org/bhartiIMG/Fee%20Refund%20Policy.pdf" }
+    { name: "Admission Process", href: "/admission-process" },
+    { name: "Fee Structure", href: "/fee-structure" },
+    { name: "Eligibility Criteria", href: "/eligibility" },
+    { name: "Refund Policy", href: "/refund-policy" }
   ]
 };
 
@@ -132,8 +132,8 @@ export default function Footer() {
         <div className="border-t border-[#EAEAEA] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-montserrat text-gray-400 tracking-wider">
           <p>© {new Date().getFullYear()} BHARTI VISHWAVIDYALAYA DURG. ALL RIGHTS RESERVED.</p>
           <div className="flex gap-6 font-semibold">
-            <a href="https://bhartiuniversity.org/privacy_policy.php" target="_blank" className="hover:text-[#5b0e2d] transition-colors duration-300">PRIVACY POLICY</a>
-            <a href="https://bhartiuniversity.org/bhartiIMG/MoA.pdf" target="_blank" className="hover:text-[#5b0e2d] transition-colors duration-300">VISHWAVIDYALAYA ORDINANCES</a>
+            <a href="/privacy-policy" className="hover:text-[#5b0e2d] transition-colors duration-300">PRIVACY POLICY</a>
+            <a href="/ordinance" className="hover:text-[#5b0e2d] transition-colors duration-300">VISHWAVIDYALAYA ORDINANCES</a>
           </div>
         </div>
 

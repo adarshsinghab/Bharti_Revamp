@@ -17,14 +17,14 @@ const newsItems = [
     tag: "ADMISSIONS",
     title: "Admission Open for PG, UG & Professional Diploma Courses 2026-27",
     description: "Verify eligibility requirements, download prospectus, and apply online for IT, Computer Science, Law, and Pharmacy streams.",
-    link: "https://bhartiuniversity.org/adminssion-process.php"
+    link: "/admission-process"
   },
   {
     date: "June 18, 2026",
     tag: "ACADEMICS",
     title: "Academic Calendar for the Session 2026-27 Released",
     description: "Plan your session activities, exams, holidays, and internship intervals according to the newly released academic calendar.",
-    link: "https://bhartiuniversity.org/bhartiIMG/ACADEMIC%20CALENDER%20BV%202025%2026.pdf"
+    link: "/academic-calendar"
   }
 ];
 
@@ -83,9 +83,7 @@ export default function NewsAndEvents() {
                 Explore pathways to sustainable engineering, corporate analytics, legal reforms, and clinical sciences in the upcoming annual session. Submissions close soon.
               </p>
               <a
-                href="https://bhartiuniversity.org/bhartiIMG/p17809202602512.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/conference-brochure"
                 className="text-burgundy font-montserrat text-[9px] font-bold tracking-widest uppercase flex items-center gap-2 hover:text-burgundy-dark transition-colors duration-300 cursor-pointer"
               >
                 VIEW BROCHURE DETAILS <ArrowRight className="w-3 h-3" />

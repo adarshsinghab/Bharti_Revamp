@@ -31,6 +31,21 @@ export default function IntroLoader({ onComplete, ready }: { onComplete: () => v
     }
   }, [minTimeElapsed, ready, onComplete]);
 
+  // Fallback safety timeout to ensure the site loads even if video loading stalls
+  useEffect(() => {
+    const safetyTimer = setTimeout(() => {
+      setShowReveal(true);
+      const timer = setTimeout(() => {
+        if (!completedRef.current) {
+          completedRef.current = true;
+          onComplete();
+        }
+      }, 1600);
+      return () => clearTimeout(timer);
+    }, 4500); // 4.5 seconds maximum load screen time
+    return () => clearTimeout(safetyTimer);
+  }, [onComplete]);
+
   return (
     <div className="fixed inset-0 overflow-hidden z-[99999] flex items-center justify-center bg-[#FCFAF7]">
       {/* Background Soft Ambient Light Spheres */}

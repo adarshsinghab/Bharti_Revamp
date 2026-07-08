@@ -195,7 +195,7 @@ export default function FeaturedPrograms() {
 
                   {/* Apply Trigger */}
                   <a
-                    href="https://bhartiuniversity.org/fee-structure.php"
+                    href="/fee-structure"
                     className="w-full bg-white hover:bg-burgundy text-[#0f172a] hover:text-white border border-[#E2E8F0] hover:border-burgundy py-3 rounded-full font-montserrat text-[9px] font-bold tracking-widest text-center transition-all duration-300 flex items-center justify-center gap-1.5 shadow-sm cursor-pointer hover:shadow-burgundy/20"
                   >
                     APPLY NOW <ArrowRight className="w-3.5 h-3.5" />

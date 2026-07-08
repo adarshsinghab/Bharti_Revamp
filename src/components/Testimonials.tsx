@@ -50,7 +50,7 @@ export default function Testimonials() {
             {[...testimonials, ...testimonials, ...testimonials].map((t, idx) => (
               <div
                 key={idx}
-                className="inline-flex flex-col justify-between w-[320px] md:w-[420px] h-[280px] md:h-[300px] whitespace-normal bg-white border border-[#EAEAEA] rounded-3xl p-6 md:p-8 mx-4 shadow-sm hover:shadow-md hover:border-[#d4af37]/30 transition-all duration-500 relative overflow-hidden align-top group"
+                className="inline-flex flex-col justify-between w-[320px] md:w-[420px] h-[330px] md:h-[360px] whitespace-normal bg-white border border-[#EAEAEA] rounded-3xl p-6 md:p-8 mx-4 shadow-sm hover:shadow-md hover:border-[#d4af37]/30 transition-all duration-500 relative overflow-hidden align-top group"
               >
                 {/* Accent line on top of card */}
                 <div className="absolute top-0 left-0 right-0 h-[3px] bg-burgundy/10 group-hover:bg-burgundy transition-colors duration-500" />

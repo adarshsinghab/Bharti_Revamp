@@ -20,6 +20,17 @@
   --animate-marquee-reverse: marquee-reverse 35s linear infinite;
   --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   
+  /* Make all text classes 2px / 2pt bigger */
+  --text-xs: 0.875rem; /* 14px instead of 12px */
+  --text-sm: 1rem;     /* 16px instead of 14px */
+  --text-base: 1.125rem; /* 18px instead of 16px */
+  --text-lg: 1.25rem;   /* 20px instead of 18px */
+  --text-xl: 1.375rem;  /* 22px instead of 20px */
+  --text-2xl: 1.625rem; /* 26px instead of 24px */
+  --text-3xl: 2rem;     /* 32px instead of 30px */
+  --text-4xl: 2.375rem; /* 38px instead of 36px */
+  --text-5xl: 3.125rem; /* 50px instead of 48px */
+  
   @keyframes marquee {
     0% { transform: translateX(0%); }
     100% { transform: translateX(-50%); }
@@ -34,10 +45,19 @@ html {
   scroll-behavior: auto; /* Required for Lenis smooth scroll */
 }
 
+/* Prevent scrolling and layout shift during loading screen */
+html.loading, body.loading {
+  overflow: hidden !important;
+  height: 100vh !important;
+  touch-action: none;
+  -ms-touch-action: none;
+}
+
 body {
   background-color: #FFFFFF;
   color: #121212;
   overflow-x: hidden;
+  font-size: 1.125rem; /* 18px instead of 16px base font size */
 }
 
 /* Custom Lenis Smooth Scroll Styles */

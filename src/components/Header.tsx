@@ -6,72 +6,72 @@ import { Search, User, Menu, X, ChevronDown, ArrowUpRight, GraduationCap } from 
 
 const aboutLinks = {
   university: [
-    { name: "About BU", href: "https://bhartiuniversity.org/about_us.php" },
-    { name: "Vision & Mission", href: "https://bhartiuniversity.org/vision-mission.php" },
-    { name: "Chancellor Message", href: "https://bhartiuniversity.org/chancellors.php" },
-    { name: "Vice Chancellor Message", href: "https://bhartiuniversity.org/vice-chancellors.php" },
-    { name: "Registrar Message", href: "https://bhartiuniversity.org/registrar.php" },
-    { name: "Joint Director Message", href: "https://bhartiuniversity.org/joint-director.php" },
-    { name: "Administration", href: "https://bhartiuniversity.org/bhartiIMG/Administration.pdf" },
-    { name: "Council", href: "https://bhartiuniversity.org/bhartiIMG/councils.pdf" },
-    { name: "Academic Leadership", href: "https://bhartiuniversity.org/bhartiIMG/LIST OF HOD.pdf" },
-    { name: "RTI", href: "https://bhartiuniversity.org/bhartiIMG/RTI1.pdf" }
+    { name: "About BU", href: "/about-bu" },
+    { name: "Vision & Mission", href: "/vision-mission" },
+    { name: "Chancellor Message", href: "/chancellors" },
+    { name: "Vice Chancellor Message", href: "/vice-chancellors" },
+    { name: "Registrar Message", href: "/registrar" },
+    { name: "Joint Director Message", href: "/joint-director" },
+    { name: "Administration", href: "/administration" },
+    { name: "Council", href: "/council" },
+    { name: "Academic Leadership", href: "/academic-leadership" },
+    { name: "RTI", href: "/rti" }
   ],
   records: [
-    { name: "UGC Approval", href: "https://bhartiuniversity.org/bhartiIMG/Ugcapproval.pdf" },
-    { name: "Ordinance", href: "https://bhartiuniversity.org/bhartiIMG/MoA.pdf" },
-    { name: "Audit Report", href: "https://bhartiuniversity.org/bhartiIMG/audit%20report.pdf" },
-    { name: "Annual Report", href: "https://bhartiuniversity.org/bhartiIMG/Annual%20Report.pdf" },
-    { name: "AICTE EOA 2025-26", href: "https://bhartiuniversity.org/bhartiIMG/AICTE%20EOA%20Report%202025-2026.pdf" },
-    { name: "Shulk Nirdharan 2025-26", href: "https://bhartiuniversity.org/bhartiIMG/shulk%20nirdharan%202025-26.pdf" },
-    { name: "BCI EOA 2025-26", href: "https://bhartiuniversity.org/bhartiIMG/bcid1965%20Bharti%20Vishwavidyalaya,%20Durg,%20Chhattisgarh.pdf" }
+    { name: "UGC Approval", href: "/ugc-approval" },
+    { name: "Ordinance", href: "/ordinance" },
+    { name: "Audit Report", href: "/audit-report" },
+    { name: "Annual Report", href: "/annual-report" },
+    { name: "AICTE EOA 2025-26", href: "/aicte-eoa" },
+    { name: "Shulk Nirdharan 2025-26", href: "/shulk-nirdharan" },
+    { name: "BCI EOA 2025-26", href: "/bci-eoa" }
   ],
   academic: [
     { name: "Courses Offered", href: "#programs" },
-    { name: "Academic Collaboration", href: "https://bhartiuniversity.org/bhartiIMG/AC.pdf" },
-    { name: "Academic Calendar", href: "https://bhartiuniversity.org/bhartiIMG/ACADEMIC%20CALENDER%20BV%202025%2026.pdf" },
-    { name: "Library Facilities", href: "https://bhartiuniversity.org/bhartiIMG/Library.pdf" },
-    { name: "IQAC Setup", href: "https://bhartiuniversity.org/bhartiIMG/IQAC.pdf" },
-    { name: "Prospectus", href: "https://bhartiuniversity.org/bhartiIMG/Bharti%20vishwavidyalayaProspectus.pdf" }
+    { name: "Academic Collaboration", href: "/academic-collaboration" },
+    { name: "Academic Calendar", href: "/academic-calendar" },
+    { name: "Library Facilities", href: "/library-facilities" },
+    { name: "IQAC Setup", href: "/iqac-setup" },
+    { name: "Prospectus", href: "/prospectus" }
   ]
 };
 
 const admissionsLinks = {
   process: [
-    { name: "Eligibility Criteria", href: "https://bhartiuniversity.org/adminssion-process.php#eligibility" },
-    { name: "Admission Process", href: "https://bhartiuniversity.org/adminssion-process.php" },
-    { name: "Fee Structure 2025-26", href: "https://bhartiuniversity.org/fee-structure.php" },
-    { name: "Required Documents", href: "https://bhartiuniversity.org/adminssion-process.php#required-Admission" }
+    { name: "Eligibility Criteria", href: "/eligibility" },
+    { name: "Admission Process", href: "/admission-process" },
+    { name: "Fee Structure 2025-26", href: "/fee-structure" },
+    { name: "Required Documents", href: "/required-documents" }
   ],
   committees: [
-    { name: "Committees & Cell List", href: "https://bhartiuniversity.org/bhartiIMG/REVISED_Committee_&_Cell.pdf" },
-    { name: "Anti Ragging Cell", href: "https://bhartiuniversity.org/bhartiIMG/Anti%20Ragging%20Committee.pdf" },
-    { name: "Press And Media Cell", href: "https://bhartiuniversity.org/bhartiIMG/Press%20&%20Media%20Cell.pdf" },
-    { name: "WGV Cell", href: "https://bhartiuniversity.org/bhartiIMG/Women%20Grievance%20Redressal%20Cell.pdf" },
-    { name: "IPR Cell", href: "https://bhartiuniversity.org/bhartiIMG/IPR.pdf" },
-    { name: "Student Grievance Cell", href: "https://bhartiuniversity.org/bhartiIMG/Students%20Grievance%20Redressal%20Committee.pdf" },
-    { name: "Legal Aide Cell", href: "https://bhartiuniversity.org/bhartiIMG/LAC.pdf" }
+    { name: "Committees & Cell List", href: "/committees" },
+    { name: "Anti Ragging Cell", href: "/anti-ragging" },
+    { name: "Press And Media Cell", href: "/press-media" },
+    { name: "WGV Cell", href: "/women-grievance" },
+    { name: "IPR Cell", href: "/ipr" },
+    { name: "Student Grievance Cell", href: "/student-grievance" },
+    { name: "Legal Aide Cell", href: "/legal-aide" }
   ],
   cells: [
-    { name: "SEDG Cell", href: "https://bhartiuniversity.org/bhartiIMG/eoc.pdf" },
-    { name: "National Cadet Corps (NCC)", href: "https://bhartiuniversity.org/bhartiIMG/NCC%20Cell.pdf" },
-    { name: "National Service Scheme (NSS)", href: "https://bhartiuniversity.org/bhartiIMG/NSS%20Cell.pdf" },
+    { name: "SEDG Cell", href: "/sedg-cell" },
+    { name: "National Cadet Corps (NCC)", href: "/ncc" },
+    { name: "National Service Scheme (NSS)", href: "/nss" },
     { name: "Research Cell", href: "#research" },
-    { name: "UGC Cell", href: "https://bhartiuniversity.org/bhartiIMG/UGC.pdf" },
-    { name: "Internal Complaints (ICC)", href: "https://bhartiuniversity.org/bhartiIMG/Internal%20Complaints%20Committee.pdf" }
+    { name: "UGC Cell", href: "/ugc-cell" },
+    { name: "Internal Complaints (ICC)", href: "/internal-complaints" }
   ]
 };
 
 const researchLinks = [
-  { name: "Journal Publication", href: "https://bhartiuniversity.org/bhartiIMG/1_Journal%20Publication.pdf" },
-  { name: "Books Publication", href: "https://bhartiuniversity.org/bhartiIMG/2_Books%20Publication.pdf" },
-  { name: "Patents Filed", href: "https://bhartiuniversity.org/bhartiIMG/3_Patents.pdf" },
-  { name: "Seminars & Conferences", href: "https://bhartiuniversity.org/bhartiIMG/4_SEMINAR,%20CONFERENCE,%20WORKSHOP,%20WEBINAR.pdf" }
+  { name: "Journal Publication", href: "/journal-publication" },
+  { name: "Books Publication", href: "/books-publication" },
+  { name: "Patents Filed", href: "/patents-filed" },
+  { name: "Seminars & Conferences", href: "/seminars-conferences" }
 ];
 
 const conferenceLinks = [
-  { name: "NCRISD-2026 Brochure", href: "https://bhartiuniversity.org/bhartiIMG/p17809202602512.pdf" },
-  { name: "NCRISD-2026 Registration", href: "https://budurg.opencompas.com/superadmin/uni_event_name_list.php?schoolid=Mjkw" }
+  { name: "NCRISD-2026 Brochure", href: "/conference-brochure" },
+  { name: "NCRISD-2026 Registration", href: "/conference-registration" }
 ];
 
 const marqueeItems = [
@@ -105,23 +105,23 @@ export default function Header() {
       <div className="hidden lg:block bg-[#FCFAF7] text-[#5A5A5A] py-2.5 px-6 border-b border-[#EAEAEA] text-[11px] font-montserrat font-semibold tracking-wider relative z-50">
         <div className="max-w-[1600px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-1">
-            <a href="https://budurg.bhartiuniversity.org/" target="_blank" rel="noopener noreferrer" className="hover:text-burgundy transition-colors flex items-center gap-1 text-[#5A5A5A]">
-              Result Portal <ArrowUpRight className="w-3 h-3" />
+            <a href="/result-portal" className="hover:text-burgundy transition-colors flex items-center gap-1 text-[#5A5A5A]">
+              Result Portal <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
-            <a href="https://budurg.bhartiuniversity.org/superadmin/university_fee_login.php?schid=Mjkw" target="_blank" rel="noopener noreferrer" className="hover:text-burgundy transition-colors flex items-center gap-1 text-[#5A5A5A]">
-              Online Fee Payment <ArrowUpRight className="w-3 h-3" />
+            <a href="/online-fee-payment" className="hover:text-burgundy transition-colors flex items-center gap-1 text-[#5A5A5A]">
+              Online Fee Payment <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
-            <a href="https://bhartiuniversity.org/bhartiIMG/Fee%20Refund%20Policy.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-burgundy transition-colors flex items-center gap-1 text-[#5A5A5A]">
-              Refund Policy <ArrowUpRight className="w-3 h-3" />
+            <a href="/refund-policy" className="hover:text-burgundy transition-colors flex items-center gap-1 text-[#5A5A5A]">
+              Refund Policy <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
             <a href="https://budurghr.iaudithrm.com/hrmanagement/login.php?urlmid=qZ0=&resume=1" target="_blank" rel="noopener noreferrer" className="hover:text-burgundy transition-colors flex items-center gap-1 text-[#5A5A5A]">
-              Careers <ArrowUpRight className="w-3 h-3" />
+              Careers <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-1">
             <span className="opacity-85">📞 Enquiry: +91 62322 21101</span>
             <span className="opacity-85">📧 info@bhartiuniversity.org</span>
-            <a href="http://budurg.bhartiuniversity.org/" target="_blank" rel="noopener noreferrer" className="text-burgundy font-bold hover:text-gold hover:underline flex items-center gap-1">
+            <a href="/erp-login" className="text-burgundy font-bold hover:text-gold hover:underline flex items-center gap-1">
               <User className="w-3.5 h-3.5" /> ERP LOGIN
             </a>
           </div>
@@ -384,7 +384,7 @@ export default function Header() {
               <Search className="w-4.5 h-4.5" />
             </button>
             <a
-              href="https://bhartiuniversity.org/fee-structure.php"
+              href="/fee-structure"
               className="hidden sm:inline-block px-5 py-2.5 rounded-full font-montserrat text-[10px] font-bold tracking-widest text-center shadow-lg transition-all duration-300 bg-burgundy text-white hover:bg-burgundy-light"
             >
               APPLY NOW
@@ -450,19 +450,19 @@ export default function Header() {
               <div className="border-t border-white/5 pt-4">
                 <span className="text-[#d4af37] text-[10px] font-montserrat font-bold tracking-widest block mb-2 uppercase">ABOUT THE VISHWAVIDYALAYA</span>
                 <div className="grid grid-cols-1 gap-1.5 pl-3 text-sm font-medium text-white/70">
-                  <a href="https://bhartiuniversity.org/about_us.php" target="_blank" className="hover:text-white transition-colors py-1">About BU</a>
-                  <a href="https://bhartiuniversity.org/vision-mission.php" target="_blank" className="hover:text-white transition-colors py-1">Vision & Mission</a>
-                  <a href="https://bhartiuniversity.org/bhartiIMG/Administration.pdf" target="_blank" className="hover:text-white transition-colors py-1">Administration Portal</a>
-                  <a href="https://bhartiuniversity.org/fee-structure.php" className="hover:text-white transition-colors py-1">Fee Structure</a>
+                  <a href="/about-bu" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">About BU</a>
+                  <a href="/vision-mission" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">Vision & Mission</a>
+                  <a href="/administration" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">Administration Portal</a>
+                  <a href="/fee-structure" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">Fee Structure</a>
                 </div>
               </div>
 
               <div className="border-t border-white/5 pt-4">
                 <span className="text-[#d4af37] text-[10px] font-montserrat font-bold tracking-widest block mb-2 uppercase">RESEARCH & NCRISD</span>
                 <div className="grid grid-cols-1 gap-1.5 pl-3 text-sm font-medium text-white/70">
-                  <a href="https://bhartiuniversity.org/bhartiIMG/1_Journal%20Publication.pdf" target="_blank" className="hover:text-white transition-colors py-1">Publications List</a>
-                  <a href="https://bhartiuniversity.org/bhartiIMG/3_Patents.pdf" target="_blank" className="hover:text-white transition-colors py-1">Patents Directory</a>
-                  <a href="https://bhartiuniversity.org/bhartiIMG/p17809202602512.pdf" target="_blank" className="hover:text-white transition-colors py-1">NCRISD-2026 Brochure</a>
+                  <a href="/journal-publication" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">Publications List</a>
+                  <a href="/patents-filed" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">Patents Directory</a>
+                  <a href="/conference-brochure" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">NCRISD-2026 Brochure</a>
                 </div>
               </div>
 
@@ -481,15 +481,15 @@ export default function Header() {
 
             <div className="mt-auto flex flex-col gap-4">
               <a
-                href="http://budurg.bhartiuniversity.org/"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/erp-login"
+                onClick={() => setMobileMenuOpen(false)}
                 className="w-full bg-white/10 hover:bg-white/20 text-white font-montserrat text-xs font-semibold py-4 rounded-xl text-center transition-all"
               >
                 ERP PORTAL LOGIN
               </a>
               <a
-                href="https://bhartiuniversity.org/fee-structure.php"
+                href="/fee-structure"
+                onClick={() => setMobileMenuOpen(false)}
                 className="w-full bg-gold hover:bg-gold-dark text-black font-montserrat text-xs font-bold py-4 rounded-xl text-center transition-all tracking-widest text-shadow-subtle hover:shadow-lg hover:shadow-gold/20"
               >
                 APPLY FOR ADMISSION

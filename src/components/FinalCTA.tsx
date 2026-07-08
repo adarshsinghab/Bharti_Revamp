@@ -36,15 +36,13 @@ export default function FinalCTA() {
 
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full">
             <a
-              href="https://bhartiuniversity.org/fee-structure.php"
+              href="/fee-structure"
               className="w-full sm:w-auto bg-[#5b0e2d] hover:bg-[#801d43] text-white border border-[#5b0e2d] font-montserrat text-[10px] font-bold tracking-widest px-8 py-5 rounded-full shadow-lg hover:shadow-[#5b0e2d]/25 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer"
             >
               APPLY ONLINE NOW <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
-              href="https://bhartiuniversity.org/bhartiIMG/Bharti%20vishwavidyalayaProspectus.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/prospectus"
               className="w-full sm:w-auto bg-white hover:bg-gray-50 text-[#121212] border border-[#EAEAEA] font-montserrat text-[10px] font-bold tracking-widest px-8 py-5 rounded-full transition-all duration-300 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
             >
               DOWNLOAD PROSPECTUS <Download className="w-4 h-4" />

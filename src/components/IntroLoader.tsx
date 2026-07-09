@@ -64,7 +64,7 @@ export default function IntroLoader({ onComplete, ready }: { onComplete: () => v
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 1.15, filter: "blur(8px)" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-50 w-[300px] h-[300px] sm:w-[340px] sm:h-[340px] bg-white/40 backdrop-blur-2xl border border-white/60 shadow-[0_30px_60px_rgba(91,14,45,0.04)] rounded-full p-8 flex flex-col items-center justify-center"
+            className="relative z-50 w-[360px] h-[360px] sm:w-[410px] sm:h-[410px] bg-white/40 backdrop-blur-2xl border border-white/60 shadow-[0_30px_60px_rgba(91,14,45,0.04)] rounded-full p-8 flex flex-col items-center justify-center"
           >
             {/* Shimmer overlay on the glass orb */}
             <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/20 to-white/40 rounded-full pointer-events-none" />
@@ -82,7 +82,7 @@ export default function IntroLoader({ onComplete, ready }: { onComplete: () => v
               <img
                 src="/img/logo.png"
                 alt="Bharti Vishwavidyalaya"
-                className="w-44 sm:w-52 h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.05)]"
+                className="w-56 sm:w-64 h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.05)]"
               />
             </motion.div>
 

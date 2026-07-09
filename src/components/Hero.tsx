@@ -3,7 +3,6 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ShieldCheck, Award } from "lucide-react";
-import Hls from "hls.js";
 
 const heroSlides = [
   {
@@ -58,59 +57,36 @@ export default function Hero({ onVideoLoaded }: { onVideoLoaded?: () => void }) 
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // Initialize HLS streaming player with 5s chunk buffer sizing
+  // Initialize native video playback for the highly compressed MP4 video (fast-start)
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const streamUrl = "/video/playlist.m3u8";
-    let hls: Hls;
+    // Use relative path for universal compatibility
+    video.src = "video/campus_compressed.mp4";
+    video.load();
 
-    if (Hls.isSupported()) {
-      hls = new Hls({
-        maxMaxBufferLength: 10, // Buffer max 10 seconds ahead
-        maxBufferLength: 5,     // Buffer 5 seconds at a time to load in a speedy way
-        enableWorker: true,
-        lowLatencyMode: true,
-      });
-      hls.loadSource(streamUrl);
-      hls.attachMedia(video);
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        video.play().catch(() => {});
-      });
-      hls.on(Hls.Events.FRAG_BUFFERED, () => {
-        setVideoPlayable(true);
-        onVideoLoaded?.();
-      });
-      hls.on(Hls.Events.ERROR, (event, data) => {
-        if (data.fatal) {
-          setVideoError(true);
-          onVideoLoaded?.();
-        }
-      });
-    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-      // Native fallback for Safari
-      video.src = streamUrl;
-      video.addEventListener("loadedmetadata", () => {
-        video.play().catch(() => {});
-      });
-      video.addEventListener("canplay", () => {
-        setVideoPlayable(true);
-        onVideoLoaded?.();
-      });
-      video.addEventListener("error", () => {
-        setVideoError(true);
-        onVideoLoaded?.();
-      });
-    } else {
+    const handleCanPlay = () => {
+      setVideoPlayable(true);
+      onVideoLoaded?.();
+      video.play().catch(() => {});
+    };
+
+    const handleError = () => {
       setVideoError(true);
       onVideoLoaded?.();
+    };
+
+    video.addEventListener("canplay", handleCanPlay);
+    video.addEventListener("error", handleError);
+
+    if (video.readyState >= 3) {
+      handleCanPlay();
     }
 
     return () => {
-      if (hls) {
-        hls.destroy();
-      }
+      video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("error", handleError);
     };
   }, [onVideoLoaded]);
 
@@ -177,7 +153,7 @@ export default function Hero({ onVideoLoaded }: { onVideoLoaded?: () => void }) 
               key={`tagline-${currentSlide}`}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 2, y: 0 }}
-              transition={{ delay: 28 }}
+              transition={{ delay: 0.28 }}
               className="flex items-center gap-2 mb-4 bg-burgundy/20 border border-burgundy/30 rounded-full px-3.5 py-1 pop-shadow"
             >
               <Award className="w-3.5 h-3.5 text-gold filter drop-shadow-[0_0_5px_rgba(255,215,0,0.5)]" />

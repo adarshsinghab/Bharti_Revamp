@@ -63,7 +63,7 @@ export default function Testimonials() {
                   </span>
                 </div>
 
-                <p className="font-outfit text-xs md:text-sm text-[#121212] leading-relaxed mb-8 italic">
+                <p className="font-outfit text-[13px] md:text-[14px] text-[#121212] leading-relaxed mb-8 italic">
                   "{t.quote}"
                 </p>
 

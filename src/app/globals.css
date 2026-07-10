@@ -57,7 +57,7 @@ body {
   background-color: #FFFFFF;
   color: #121212;
   overflow-x: hidden;
-  font-size: 1.25rem; /* 20px instead of 18px base font size */
+  font-size: 1.05rem; /* Balanced base font size */
 }
 
 /* Custom Lenis Smooth Scroll Styles */

@@ -51,7 +51,7 @@ export default function CampusLife() {
           
           {/* Left Column: Student Life Cells */}
           <div className="lg:col-span-6 flex flex-col justify-start">
-            <span className="font-montserrat text-[9px] font-bold text-gold-dark tracking-[0.25em] uppercase block mb-2.5">
+            <span className="font-montserrat text-[11px] font-bold text-gold-dark tracking-[0.25em] uppercase block mb-2.5">
               CAMPUS EXPERIENCE
             </span>
             <h2 className="font-outfit text-3xl md:text-4xl font-extrabold text-[#0f172a] tracking-tight leading-tight mb-6">
@@ -79,19 +79,19 @@ export default function CampusLife() {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between gap-4 mb-1">
-                        <h3 className="font-outfit text-xs font-bold text-[#0f172a] group-hover:text-burgundy transition-colors duration-300">
+                        <h3 className="font-outfit text-sm font-bold text-[#0f172a] group-hover:text-burgundy transition-colors duration-300">
                           {act.title}
                         </h3>
                         <a
                           href={act.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gold-dark hover:text-burgundy flex items-center gap-1 text-[8px] font-bold font-montserrat tracking-widest uppercase transition-colors"
+                          className="text-gold-dark hover:text-burgundy flex items-center gap-1 text-[10px] font-bold font-montserrat tracking-widest uppercase transition-colors"
                         >
                           DOCUMENT <ArrowUpRight className="w-3 h-3" />
                         </a>
                       </div>
-                      <p className="font-outfit text-[10px] text-gray-500 font-light leading-normal">
+                      <p className="font-outfit text-[12px] text-gray-500 font-light leading-normal">
                         {act.description}
                       </p>
                     </div>

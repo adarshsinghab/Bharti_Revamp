@@ -48,10 +48,10 @@ export default function WhyBharti() {
             />
             {/* Editorial overlay */}
             <div className="absolute bottom-5 left-5 z-20 bg-white/95 backdrop-blur-md p-5 rounded-xl max-w-xs border border-[#E2E8F0] shadow-md">
-              <span className="font-montserrat text-[8px] font-bold text-burgundy tracking-[0.2em] block mb-1">
+              <span className="font-montserrat text-[10px] font-bold text-burgundy tracking-[0.2em] block mb-1">
                 VISION 2030 INFRASTRUCTURE
               </span>
-              <p className="font-outfit text-[11px] text-[#0f172a] font-semibold leading-normal">
+              <p className="font-outfit text-[13px] text-[#0f172a] font-semibold leading-normal">
                 Building spaces where legacy meets tomorrow.
               </p>
             </div>
@@ -59,7 +59,7 @@ export default function WhyBharti() {
  
           {/* Right Column: Strategic Pillars */}
           <div className="lg:col-span-6 flex flex-col items-start">
-            <span className="font-montserrat text-[9px] font-bold text-gold-dark tracking-[0.25em] uppercase block mb-2.5">
+            <span className="font-montserrat text-[11px] font-bold text-gold-dark tracking-[0.25em] uppercase block mb-2.5">
               WHY BHARTI VISHWAVIDYALAYA
             </span>
             <h2 className="font-outfit text-3xl md:text-4xl font-extrabold text-[#0f172a] tracking-tight leading-tight mb-6">
@@ -88,7 +88,7 @@ export default function WhyBharti() {
                       <h3 className="font-outfit text-sm font-bold text-[#0f172a] mb-1 group-hover:text-burgundy transition-colors duration-300">
                         {p.title}
                       </h3>
-                      <p className="font-outfit text-[11px] text-gray-500 font-light leading-relaxed">
+                      <p className="font-outfit text-[13px] text-gray-500 font-light leading-relaxed">
                         {p.description}
                       </p>
                     </div>

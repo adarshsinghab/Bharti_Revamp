@@ -22,13 +22,6 @@ const programsData: Record<string, Array<{
       highlights: ["AI & Data Science Labs", "Industry Internship", "GPU Server Lab access"]
     },
     {
-      name: "Master of Computer Applications (MCA)",
-      duration: "2 Years (Full Time)",
-      accreditation: "UGC Approved",
-      description: "Designed for advanced software systems development and enterprise database management architecture.",
-      highlights: ["Cloud DevOps Track", "Full Stack Development", "Academic Thesis project"]
-    },
-    {
       name: "Bachelor of Computer Applications (BCA)",
       duration: "3 Years (Full Time)",
       accreditation: "UGC Approved",
@@ -112,7 +105,7 @@ export default function FeaturedPrograms() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
           <div>
-            <span className="font-montserrat text-[9px] font-bold text-gold-dark tracking-[0.25em] uppercase block mb-2.5">
+            <span className="font-montserrat text-[11px] font-bold text-gold-dark tracking-[0.25em] uppercase block mb-2.5">
               ACADEMIC OFFERINGS
             </span>
             <h2 className="font-outfit text-3xl md:text-4xl font-extrabold text-[#0f172a] tracking-tight leading-tight">
@@ -130,7 +123,7 @@ export default function FeaturedPrograms() {
             <button
               key={cat}
               onClick={() => setActiveTab(cat)}
-              className="relative px-5 py-2 font-montserrat text-[9px] font-bold tracking-widest transition-colors duration-300 focus:outline-none cursor-pointer rounded-full"
+              className="relative px-5 py-2 font-montserrat text-[11px] font-bold tracking-widest transition-colors duration-300 focus:outline-none cursor-pointer rounded-full"
             >
               <span className={`relative z-10 ${activeTab === cat ? "text-white" : "text-gray-500 hover:text-[#0f172a]"}`}>
                 {cat}
@@ -165,10 +158,10 @@ export default function FeaturedPrograms() {
                   <div>
                     {/* Program Duration & Badge */}
                     <div className="flex justify-between items-center mb-5">
-                      <div className="flex items-center gap-1.5 text-gray-500 text-[9px] font-bold font-montserrat tracking-wider">
+                      <div className="flex items-center gap-1.5 text-gray-500 text-[11px] font-bold font-montserrat tracking-wider">
                         <Clock className="w-3.5 h-3.5" /> {p.duration}
                       </div>
-                      <span className="bg-[#f8fafc] text-gold-dark border border-gold-dark/30 font-montserrat font-bold text-[8px] uppercase tracking-wider py-0.5 px-2 rounded text-shadow-gold">
+                      <span className="bg-[#f8fafc] text-gold-dark border border-gold-dark/30 font-montserrat font-bold text-[10px] uppercase tracking-wider py-0.5 px-2 rounded text-shadow-gold">
                         {p.accreditation}
                       </span>
                     </div>
@@ -179,14 +172,14 @@ export default function FeaturedPrograms() {
                     </h3>
 
                     {/* Description */}
-                    <p className="font-outfit text-[11px] text-gray-500 font-light leading-relaxed mb-5">
+                    <p className="font-outfit text-[13px] text-gray-500 font-light leading-relaxed mb-5">
                       {p.description}
                     </p>
 
                     {/* Highlights Checklist */}
                     <ul className="space-y-2 mb-6 border-t border-[#E2E8F0] pt-4.5">
                       {p.highlights.map((h, hIdx) => (
-                        <li key={hIdx} className="flex items-center gap-2 text-[10px] text-slate-700 font-medium">
+                        <li key={hIdx} className="flex items-center gap-2 text-[12px] text-slate-700 font-medium">
                           <CheckCircle2 className="w-3.5 h-3.5 text-burgundy" /> {h}
                         </li>
                       ))}
@@ -196,7 +189,7 @@ export default function FeaturedPrograms() {
                   {/* Apply Trigger */}
                   <a
                     href="/fee-structure"
-                    className="w-full bg-white hover:bg-burgundy text-[#0f172a] hover:text-white border border-[#E2E8F0] hover:border-burgundy py-3 rounded-full font-montserrat text-[9px] font-bold tracking-widest text-center transition-all duration-300 flex items-center justify-center gap-1.5 shadow-sm cursor-pointer hover:shadow-burgundy/20"
+                    className="w-full bg-white hover:bg-burgundy text-[#0f172a] hover:text-white border border-[#E2E8F0] hover:border-burgundy py-3 rounded-full font-montserrat text-[11px] font-bold tracking-widest text-center transition-all duration-300 flex items-center justify-center gap-1.5 shadow-sm cursor-pointer hover:shadow-burgundy/20"
                   >
                     APPLY NOW <ArrowRight className="w-3.5 h-3.5" />
                   </a>

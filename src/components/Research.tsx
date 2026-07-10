@@ -49,18 +49,18 @@ export default function Research() {
               NCRISD-2026
             </h3>
             
-            <p className="font-montserrat text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-4 leading-normal">
+            <p className="font-montserrat text-[12px] font-bold text-gray-500 uppercase tracking-wider mb-4 leading-normal">
               National Conference on Interdisciplinary Research, Innovation and Sustainable Development
             </p>
             
-            <p className="font-outfit text-[11px] text-gray-500 font-light leading-relaxed mb-6">
+            <p className="font-outfit text-[13px] text-gray-500 font-light leading-relaxed mb-6">
               Bharti Vishwavidyalaya invites scholars, scientists, and educators to submit original scientific papers to NCRISD-2026. Join global minds discussing pathways to sustainable development, tech disruption, and academic innovation.
             </p>
 
             {/* Conference Stats / Details */}
             <div className="grid grid-cols-2 gap-4 mb-6 border-t border-b border-[#E2E8F0] py-4">
               <div>
-                <span className="text-[9px] font-montserrat font-bold text-burgundy uppercase tracking-wider block mb-0.5">
+                <span className="text-[11px] font-montserrat font-bold text-burgundy uppercase tracking-wider block mb-0.5">
                   CALL FOR PAPERS
                 </span>
                 <span className="text-xs font-outfit font-bold text-[#0f172a]">
@@ -68,7 +68,7 @@ export default function Research() {
                 </span>
               </div>
               <div>
-                <span className="text-[9px] font-montserrat font-bold text-burgundy uppercase tracking-wider block mb-0.5">
+                <span className="text-[11px] font-montserrat font-bold text-burgundy uppercase tracking-wider block mb-0.5">
                   CONFERENCE VENUE
                 </span>
                 <span className="text-xs font-outfit font-bold text-[#0f172a]">
@@ -81,7 +81,7 @@ export default function Research() {
             <div className="flex flex-col sm:flex-row gap-3">
               <a
                 href="/conference-brochure"
-                className="bg-burgundy hover:bg-burgundy-light text-white font-montserrat text-[9px] font-bold tracking-widest px-5 py-3.5 rounded-full text-center shadow-sm transition-all duration-300 flex items-center justify-center gap-1.5 flex-1 cursor-pointer hover:shadow-burgundy/20"
+                className="bg-burgundy hover:bg-burgundy-light text-white font-montserrat text-[11px] font-bold tracking-widest px-5 py-3.5 rounded-full text-center shadow-sm transition-all duration-300 flex items-center justify-center gap-1.5 flex-1 cursor-pointer hover:shadow-burgundy/20"
               >
                 DOWNLOAD BROCHURE <ArrowRight className="w-3 h-3" />
               </a>
@@ -89,7 +89,7 @@ export default function Research() {
                 href="https://budurg.opencompas.com/superadmin/uni_event_name_list.php?schoolid=Mjkw"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white hover:bg-slate-50 text-[#0f172a] font-montserrat text-[9px] font-bold tracking-widest px-5 py-3.5 rounded-full text-center border border-[#E2E8F0] transition-all duration-300 flex items-center justify-center flex-1 shadow-sm cursor-pointer"
+                className="bg-white hover:bg-slate-50 text-[#0f172a] font-montserrat text-[11px] font-bold tracking-widest px-5 py-3.5 rounded-full text-center border border-[#E2E8F0] transition-all duration-300 flex items-center justify-center flex-1 shadow-sm cursor-pointer"
               >
                 REGISTER ONLINE
               </a>
@@ -98,7 +98,7 @@ export default function Research() {
 
           {/* Right Column: General Research Directories */}
           <div className="lg:col-span-7 flex flex-col justify-start">
-            <span className="font-montserrat text-[9px] font-bold text-gold-dark tracking-[0.25em] uppercase block mb-2.5">
+            <span className="font-montserrat text-[11px] font-bold text-gold-dark tracking-[0.25em] uppercase block mb-2.5">
               ACADEMIC REPOSITORY
             </span>
             <h2 className="font-outfit text-3xl md:text-4xl font-extrabold text-[#0f172a] tracking-tight leading-tight mb-5">
@@ -128,10 +128,10 @@ export default function Research() {
                       <Icon className="w-4 h-4" />
                     </div>
                     <div>
-                      <h3 className="font-outfit text-xs font-bold text-[#0f172a] mb-1 flex items-center gap-1 group-hover:text-burgundy transition-colors duration-300">
+                      <h3 className="font-outfit text-sm font-bold text-[#0f172a] mb-1 flex items-center gap-1 group-hover:text-burgundy transition-colors duration-300">
                         {pub.title} <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                       </h3>
-                      <p className="font-outfit text-[10px] text-gray-500 font-light leading-relaxed">
+                      <p className="font-outfit text-[12px] text-gray-500 font-light leading-relaxed">
                         {pub.description}
                       </p>
                     </div>

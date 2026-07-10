@@ -66,13 +66,31 @@ export default function Hero({ onVideoLoaded }: { onVideoLoaded?: () => void }) 
     video.src = "video/campus_compressed.mp4";
     video.load();
 
+    // Safety timeout: if the video doesn't load enough to play in 2.5s (due to slow network), fall back to slideshow
+    let playTimeout = setTimeout(() => {
+      if (video.readyState < 3) {
+        console.warn("Video load stalled, falling back to slideshow.");
+        setVideoError(true);
+        onVideoLoaded?.();
+      }
+    }, 2500);
+
     const handleCanPlay = () => {
+      clearTimeout(playTimeout);
       setVideoPlayable(true);
       onVideoLoaded?.();
-      video.play().catch(() => {});
+      
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((err) => {
+          console.warn("Video play was blocked by browser. Falling back to slideshow:", err);
+          setVideoError(true);
+        });
+      }
     };
 
     const handleError = () => {
+      clearTimeout(playTimeout);
       setVideoError(true);
       onVideoLoaded?.();
     };
@@ -85,6 +103,7 @@ export default function Hero({ onVideoLoaded }: { onVideoLoaded?: () => void }) 
     }
 
     return () => {
+      clearTimeout(playTimeout);
       video.removeEventListener("canplay", handleCanPlay);
       video.removeEventListener("error", handleError);
     };

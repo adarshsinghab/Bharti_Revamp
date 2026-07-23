@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { BookOpen, FileCode, Radio, FileText, ArrowRight } from "lucide-react";
 
 const publications = [
@@ -79,12 +80,12 @@ export default function Research() {
 
             {/* Conference CTAs */}
             <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href="/conference-brochure"
+              <Link
+                href="/about#prospectus"
                 className="bg-burgundy hover:bg-burgundy-light text-white font-montserrat text-[11px] font-bold tracking-widest px-5 py-3.5 rounded-full text-center shadow-sm transition-all duration-300 flex items-center justify-center gap-1.5 flex-1 cursor-pointer hover:shadow-burgundy/20"
               >
                 DOWNLOAD BROCHURE <ArrowRight className="w-3 h-3" />
-              </a>
+              </Link>
               <a
                 href="https://budurg.opencompas.com/superadmin/uni_event_name_list.php?schoolid=Mjkw"
                 target="_blank"
@@ -121,7 +122,7 @@ export default function Research() {
                     initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: idx * 0.08 }}
+                    transition={{ duration: 1.2, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
                     className="group border-b border-[#E2E8F0] pb-4.5 flex gap-4 items-start hover:border-burgundy transition-colors duration-300 cursor-pointer"
                   >
                     <div className="w-9 h-9 rounded-xl bg-burgundy/5 flex items-center justify-center text-burgundy group-hover:bg-burgundy group-hover:text-white transition-colors duration-500 flex-shrink-0">

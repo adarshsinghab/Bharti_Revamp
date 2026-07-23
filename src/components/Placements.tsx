@@ -1,13 +1,8 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { TrendingUp, Landmark, ShieldCheck } from "lucide-react";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 const recruiters = [
   "Tata Consultancy Services",
@@ -24,33 +19,9 @@ const recruiters = [
 
 export default function Placements() {
   const [activeTab, setActiveTab] = useState<"chart" | "stories">("chart");
-  const chartRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (activeTab !== "chart" || !chartRef.current) return;
-
-    // Animate HTML Bar Chart Heights using GSAP
-    const bars = chartRef.current.querySelectorAll(".chart-bar");
-    gsap.killTweensOf(bars);
-    gsap.fromTo(
-      bars,
-      { height: "0px" },
-      {
-        height: (idx, target) => target.getAttribute("data-height") || "0px",
-        duration: 1.2,
-        ease: "power2.out",
-        stagger: 0.12,
-        scrollTrigger: {
-          trigger: chartRef.current,
-          start: "top 85%",
-        },
-      }
-    );
-  }, [activeTab]);
 
   return (
-    <section ref={triggerRef} className="py-14 md:py-18 bg-[#f8fafc] border-b border-[#E2E8F0] overflow-hidden" id="placements">
+    <section className="py-14 md:py-18 bg-[#f8fafc] border-b border-[#E2E8F0] overflow-hidden" id="placements">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         
         {/* Section Header */}
@@ -150,42 +121,42 @@ export default function Placements() {
                 </div>
 
                 {/* HTML Bar Chart (Perfect Scale and Fit) */}
-                <div ref={chartRef} className="relative w-full h-[150px] mt-2 flex items-end justify-around px-4">
+                <div className="relative w-full h-[150px] mt-2 flex items-end justify-around px-4">
                   {/* Baseline */}
                   <div className="absolute left-4 right-4 bottom-[30px] h-[1px] bg-gray-200" />
 
                   {/* 2022: 78% */}
                   <div className="flex flex-col items-center flex-1 h-full justify-end relative z-10">
                     <span className="text-[10px] font-bold text-gray-500 mb-1">78%</span>
-                    <div className="w-7 sm:w-10 md:w-12 bg-slate-200 rounded-t-md chart-bar" data-height="78px" style={{ height: "0px" }} />
+                    <motion.div initial={{ height: 0 }} whileInView={{ height: "78px" }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.1 }} className="w-7 sm:w-10 md:w-12 bg-slate-200 rounded-t-md" />
                     <span className="text-[10px] text-gray-500 mt-2 block h-[20px] leading-[20px]">2022</span>
                   </div>
 
                   {/* 2023: 84% */}
                   <div className="flex flex-col items-center flex-1 h-full justify-end relative z-10">
                     <span className="text-[10px] font-bold text-gray-400 mb-1">84%</span>
-                    <div className="w-7 sm:w-10 md:w-12 bg-slate-400 rounded-t-md chart-bar" data-height="84px" style={{ height: "0px" }} />
+                    <motion.div initial={{ height: 0 }} whileInView={{ height: "84px" }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} className="w-7 sm:w-10 md:w-12 bg-slate-400 rounded-t-md" />
                     <span className="text-[10px] text-gray-500 mt-2 block h-[20px] leading-[20px]">2023</span>
                   </div>
 
                   {/* 2024: 89% */}
                   <div className="flex flex-col items-center flex-1 h-full justify-end relative z-10">
-                    <span className="text-[10px] font-bold text-[#c5a059] mb-1">89%</span>
-                    <div className="w-7 sm:w-10 md:w-12 bg-[#c5a059] rounded-t-md chart-bar" data-height="89px" style={{ height: "0px" }} />
+                    <span className="text-[10px] font-bold text-gold-dark mb-1">89%</span>
+                    <motion.div initial={{ height: 0 }} whileInView={{ height: "89px" }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.3 }} className="w-7 sm:w-10 md:w-12 bg-gold-dark rounded-t-md" />
                     <span className="text-[10px] text-gray-500 mt-2 block h-[20px] leading-[20px]">2024</span>
                   </div>
 
                   {/* 2025: 92% */}
                   <div className="flex flex-col items-center flex-1 h-full justify-end relative z-10">
-                    <span className="text-[10px] font-bold text-[#f60401] mb-1">92%</span>
-                    <div className="w-7 sm:w-10 md:w-12 bg-[#f60401] rounded-t-md chart-bar" data-height="92px" style={{ height: "0px" }} />
+                    <span className="text-[10px] font-bold text-burgundy mb-1">92%</span>
+                    <motion.div initial={{ height: 0 }} whileInView={{ height: "92px" }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.4 }} className="w-7 sm:w-10 md:w-12 bg-burgundy rounded-t-md" />
                     <span className="text-[10px] text-gray-500 mt-2 block h-[20px] leading-[20px]">2025</span>
                   </div>
 
                   {/* 2026: 95% */}
                   <div className="flex flex-col items-center flex-1 h-full justify-end relative z-10">
-                    <span className="text-[10px] font-bold text-[#c5a059] mb-1">95%</span>
-                    <div className="w-7 sm:w-10 md:w-12 bg-[#c5a059] rounded-t-md chart-bar" data-height="95px" style={{ height: "0px" }} />
+                    <span className="text-[10px] font-bold text-gold-dark mb-1">95%</span>
+                    <motion.div initial={{ height: 0 }} whileInView={{ height: "95px" }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.5 }} className="w-7 sm:w-10 md:w-12 bg-gold-dark rounded-t-md" />
                     <span className="text-[10px] text-gray-500 mt-2 block h-[20px] leading-[20px]">2026 (Est)</span>
                   </div>
                 </div>

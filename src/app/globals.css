@@ -7,29 +7,29 @@
   
   --color-burgundy: #f60401;
   --color-burgundy-light: #ff2a26;
-  --color-burgundy-dark: #b80300;
-  --color-gold: #FFD700;
-  --color-gold-dark: #E5A900;
-  --color-gold-light: #FFF59D;
+  --color-burgundy-dark: #cc0000;
+  --color-gold: #d4af37;
+  --color-gold-dark: #b89224;
+  --color-gold-light: #fef08a;
   --color-near-black: #121212;
   --color-warm-white: #FAF8F5;
   --color-soft-neutral: #FCFAF7;
   --color-border-gray: #EAEAEA;
   
-  --animate-marquee: marquee 35s linear infinite;
-  --animate-marquee-reverse: marquee-reverse 35s linear infinite;
-  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  
-  /* Make all text classes an additional 2px / 2pt bigger (+4px / +4pt total from default) */
-  --text-xs: 1rem;       /* 16px instead of 14px */
-  --text-sm: 1.125rem;   /* 18px instead of 16px */
-  --text-base: 1.25rem;  /* 20px instead of 18px */
-  --text-lg: 1.375rem;   /* 22px instead of 20px */
-  --text-xl: 1.5rem;     /* 24px instead of 22px */
-  --text-2xl: 1.75rem;   /* 28px instead of 26px */
-  --text-3xl: 2.125rem;  /* 34px instead of 32px */
-  --text-4xl: 2.5rem;    /* 40px instead of 38px */
-  --text-5xl: 3.25rem;   /* 52px instead of 50px */
+  --animate-marquee: marquee 50s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 50s linear infinite;
+  --animate-pulse-slow: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  /* Full-scale bold typography tokens */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1.0rem;    /* 16px standard base */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-3xl: 1.875rem;  /* 30px */
+  --text-4xl: 2.25rem;   /* 36px */
+  --text-5xl: 3.0rem;    /* 48px */
   
   @keyframes marquee {
     0% { transform: translateX(0%); }
@@ -42,6 +42,9 @@
 }
 
 html {
+  font-size: 103%; /* 103% Root Typography Scale (+3% increase) */
+  max-width: 100vw;
+  overflow-x: clip;
   scroll-behavior: auto; /* Required for Lenis smooth scroll */
 }
 
@@ -56,8 +59,30 @@ html.loading, body.loading {
 body {
   background-color: #FFFFFF;
   color: #121212;
-  overflow-x: hidden;
-  font-size: 1.05rem; /* Balanced base font size */
+  max-width: 100vw;
+  overflow-x: clip;
+  font-size: 1.0rem; /* Full 100% base typography */
+  line-height: 1.6;
+}
+
+/* Smooth Target Section Glow Highlight Animation */
+@keyframes sectionTargetPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(246, 4, 1, 0), 0 0 0 0 rgba(212, 175, 55, 0);
+    transform: scale(1);
+  }
+  30% {
+    box-shadow: 0 0 0 4px rgba(246, 4, 1, 0.4), 0 0 35px 10px rgba(212, 175, 55, 0.3);
+    transform: scale(1.01);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(246, 4, 1, 0), 0 0 0 0 rgba(212, 175, 55, 0);
+    transform: scale(1);
+  }
+}
+
+.section-target-glow {
+  animation: sectionTargetPulse 2.2s ease-in-out forwards;
 }
 
 /* Custom Lenis Smooth Scroll Styles */
@@ -79,14 +104,14 @@ body {
 
 /* Premium Visual Selection */
 ::selection {
-  background-color: rgba(91, 14, 45, 0.1);
-  color: #5b0e2d;
+  background-color: rgba(246, 4, 1, 0.15);
+  color: #f60401;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -94,105 +119,42 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #E5E5E5;
+  background: #E2E8F0;
   border-radius: 4px;
-  border: 2px solid #FFFFFF;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #d4af37;
+  background: #CBD5E1;
 }
 
-/* Cinematic Parallax Helpers */
-.parallax-container {
-  position: relative;
-  overflow: hidden;
+/* Section Highlighting Glow Animation */
+@keyframes sectionGlowPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.8), 0 0 0 0 rgba(91, 14, 45, 0.4);
+    border-color: #d4af37;
+    transform: scale(1.01);
+  }
+  50% {
+    box-shadow: 0 0 30px 10px rgba(212, 175, 55, 0.4), 0 0 20px 4px rgba(91, 14, 45, 0.3);
+    border-color: #5b0e2d;
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    transform: scale(1);
+  }
 }
 
-.parallax-img {
-  position: absolute;
-  top: -15%;
-  left: 0;
-  width: 100%;
-  height: 130%;
-  object-fit: cover;
-  will-change: transform;
+.section-highlight-glow {
+  animation: sectionGlowPulse 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  border-radius: 1.5rem;
 }
 
-/* Custom Utilities */
-.text-balance {
-  text-wrap: balance;
-}
 
-.clip-path-circle {
-  clip-path: circle(0% at 50% 50%);
-}
-
-/* Base typography utilities */
-.editorial-title {
-  font-family: var(--font-outfit);
-  letter-spacing: -0.02em;
-}
-
-.editorial-subtitle {
-  font-family: var(--font-montserrat);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-/* Cinematic 3D Depth & Shadow Utilities */
+/* Depth Card Elevation Utility */
 .depth-card {
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.6s ease;
-  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px);
-  will-change: transform, box-shadow;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
 }
 
 .depth-card:hover {
-  transform: perspective(1000px) translateY(-6px) translateZ(15px) rotateX(2deg) rotateY(-1deg);
-  box-shadow: 
-    0 25px 50px -12px rgba(91, 14, 45, 0.12),
-    0 15px 30px -15px rgba(0, 0, 0, 0.2),
-    0 0 40px 0 rgba(212, 175, 55, 0.05);
+  transform: translateY(-2px);
 }
-
-.cinematic-shadow {
-  box-shadow: 
-    0 20px 40px -10px rgba(0, 0, 0, 0.3),
-    0 0 50px -10px rgba(91, 14, 45, 0.15);
-}
-
-.glass-premium {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.glass-premium-dark {
-  background: rgba(18, 18, 18, 0.6);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* 3D Cinematic Drop Shadow & Text Pop Utilities */
-.text-shadow-pop {
-  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.65), 0 2px 4px rgba(0, 0, 0, 0.8);
-}
-
-.text-shadow-gold {
-  text-shadow: 0 0 12px rgba(255, 215, 0, 0.55), 0 2px 4px rgba(0, 0, 0, 0.6);
-}
-
-.text-shadow-subtle {
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-}
-
-.pop-shadow {
-  filter: drop-shadow(0 10px 20px rgba(246, 4, 1, 0.25)) drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
-}
-
-.glow-gold {
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
-  border-color: rgba(255, 215, 0, 0.4) !important;
-}
-
-

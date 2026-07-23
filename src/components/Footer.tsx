@@ -4,22 +4,22 @@ import { MapPin, Phone, Mail } from "lucide-react";
 
 const links = {
   academics: [
-    { name: "Programs Offered", href: "#programs" },
-    { name: "Academic Collaboration", href: "/academic-collaboration" },
-    { name: "Library Infrastructure", href: "/library-facilities" },
-    { name: "Academic Calendar", href: "/academic-calendar" }
+    { name: "All Programs Offered", href: "/academics" },
+    { name: "Sister Institutions", href: "/institutions" },
+    { name: "Scholarships & Loans", href: "/scholarships" },
+    { name: "Campus Life & Facilities", href: "/campus-life" }
   ],
   governance: [
-    { name: "UGC ApprovalStatus", href: "/ugc-approval" },
-    { name: "AICTE EOA 2025-26", href: "/aicte-eoa" },
-    { name: "BCI EOA 2025-26", href: "/bci-eoa" },
-    { name: "Shulk Nirdharan", href: "/shulk-nirdharan" }
+    { name: "UGC & AIU Approvals", href: "/about#ugc-approval" },
+    { name: "Leadership Messages", href: "/about#chancellor-msg" },
+    { name: "23 Academic Cells", href: "/campus-life" },
+    { name: "MoUs & Collaborations", href: "/about#about-bu" }
   ],
   admissions: [
-    { name: "Admission Process", href: "/admission-process" },
-    { name: "Fee Structure", href: "/fee-structure" },
-    { name: "Eligibility Criteria", href: "/eligibility" },
-    { name: "Refund Policy", href: "/refund-policy" }
+    { name: "Admission Enquiry", href: "/contact" },
+    { name: "Scholarships & Loans", href: "/scholarships" },
+    { name: "Career Placements", href: "/placements" },
+    { name: "Route Map & Reach Us", href: "/contact" }
   ]
 };
 

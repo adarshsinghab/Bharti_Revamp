@@ -5,6 +5,7 @@ import IntroLoader from "@/components/IntroLoader";
 import SmoothScroll from "@/components/SmoothScroll";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import LatestNotices from "@/components/LatestNotices";
 import Highlights from "@/components/Highlights";
 import WhyBharti from "@/components/WhyBharti";
 import FeaturedPrograms from "@/components/FeaturedPrograms";
@@ -40,15 +41,29 @@ export default function Home() {
     };
   }, [loading, showConstruction]);
 
-  // Intercept all mock route clicks to open the modal on the same page
+  // Intercept unbuilt mock route clicks to open the modal on the same page
   useEffect(() => {
     const handleLinkClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const anchor = target.closest("a");
       if (anchor) {
         const href = anchor.getAttribute("href");
-        // Intercept any local route that isn't the homepage, a hash link, or a mailto link
-        if (href && href.startsWith("/") && href !== "/" && !href.startsWith("#") && !href.startsWith("mailto:")) {
+        // Intercept any local route that isn't homepage, existing pages (/about, /admin), hash anchors, or mailto
+        if (
+          href &&
+          href.startsWith("/") &&
+          href !== "/" &&
+          !href.startsWith("/about") &&
+          !href.startsWith("/admin") &&
+          !href.startsWith("/academics") &&
+          !href.startsWith("/institutions") &&
+          !href.startsWith("/placements") &&
+          !href.startsWith("/scholarships") &&
+          !href.startsWith("/campus-life") &&
+          !href.startsWith("/contact") &&
+          !href.startsWith("#") &&
+          !href.startsWith("mailto:")
+        ) {
           e.preventDefault();
           setShowConstruction(true);
         }
@@ -74,6 +89,7 @@ export default function Home() {
           <Header />
           <main className="flex flex-col w-full">
             <Hero onVideoLoaded={() => setVideoLoaded(true)} />
+            <LatestNotices />
             <Highlights />
             <WhyBharti />
             <FeaturedPrograms />
@@ -119,7 +135,7 @@ export default function Home() {
                 <div className="absolute inset-8 bg-gold/10 rounded-full blur-2xl" />
                 
                 <motion.img
-                  src="/img/under_construction.png"
+                  src="/img/under_construction.webp"
                   alt="Under Construction"
                   className="relative z-10 w-full h-full object-contain drop-shadow-[0_15px_30px_rgba(91,14,45,0.08)]"
                   animate={{ 

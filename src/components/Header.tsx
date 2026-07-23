@@ -1,77 +1,76 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, User, Menu, X, ChevronDown, ArrowUpRight, GraduationCap } from "lucide-react";
 
 const aboutLinks = {
   university: [
-    { name: "About BU", href: "/about-bu" },
-    { name: "Vision & Mission", href: "/vision-mission" },
-    { name: "Chancellor Message", href: "/chancellors" },
-    { name: "Vice Chancellor Message", href: "/vice-chancellors" },
-    { name: "Registrar Message", href: "/registrar" },
-    { name: "Joint Director Message", href: "/joint-director" },
-    { name: "Administration", href: "/administration" },
-    { name: "Council", href: "/council" },
-    { name: "Academic Leadership", href: "/academic-leadership" },
-    { name: "RTI", href: "/rti" }
+    { name: "About BU", href: "/about#about-bu" },
+    { name: "Vision & Mission", href: "/about#vision-mission" },
+    { name: "Chancellor Message", href: "/about#chancellor-msg" },
+    { name: "Vice Chancellor Message", href: "/about#vc-msg" },
+    { name: "Registrar Message", href: "/about#registrar-msg" },
+    { name: "Joint Director Message", href: "/about#joint-director-msg" },
+    { name: "Administration", href: "/about#about-bu" },
+    { name: "Academic Leadership", href: "/about#vc-msg" }
   ],
   records: [
-    { name: "UGC Approval", href: "/ugc-approval" },
-    { name: "Ordinance", href: "/ordinance" },
-    { name: "Audit Report", href: "/audit-report" },
-    { name: "Annual Report", href: "/annual-report" },
-    { name: "AICTE EOA 2025-26", href: "/aicte-eoa" },
-    { name: "Shulk Nirdharan 2025-26", href: "/shulk-nirdharan" },
-    { name: "BCI EOA 2025-26", href: "/bci-eoa" }
+    { name: "UGC Approval", href: "/about#ugc-approval" },
+    { name: "Ordinance", href: "/about#ordinance" },
+    { name: "Audit Report", href: "/about#audit-report" },
+    { name: "Annual Report", href: "/about#annual-report" },
+    { name: "AICTE EOA 2025-26", href: "/about#aicte-eoa" },
+    { name: "Shulk Nirdharan 2025-26", href: "/about#shulk-nirdharan" },
+    { name: "BCI EOA 2025-26", href: "/about#bci-eoa" }
   ],
   academic: [
-    { name: "Courses Offered", href: "#programs" },
-    { name: "Academic Collaboration", href: "/academic-collaboration" },
-    { name: "Academic Calendar", href: "/academic-calendar" },
-    { name: "Library Facilities", href: "/library-facilities" },
-    { name: "IQAC Setup", href: "/iqac-setup" },
-    { name: "Prospectus", href: "/prospectus" }
+    { name: "Courses Offered", href: "/academics" },
+    { name: "Academic Collaboration", href: "/about#academic-collaboration" },
+    { name: "Academic Calendar", href: "/about#academic-calendar" },
+    { name: "Library Facilities", href: "/campus-life#library" },
+    { name: "IQAC Setup", href: "/campus-life#iqac" },
+    { name: "Prospectus", href: "/about#prospectus" }
   ]
 };
 
 const admissionsLinks = {
   process: [
-    { name: "Eligibility Criteria", href: "/eligibility" },
-    { name: "Admission Process", href: "/admission-process" },
-    { name: "Fee Structure 2025-26", href: "/fee-structure" },
-    { name: "Required Documents", href: "/required-documents" }
+    { name: "Eligibility Criteria", href: "/academics" },
+    { name: "Admission Process", href: "/contact#admission-process" },
+    { name: "Fee Structure 2025-26", href: "/scholarships#fee-structure" },
+    { name: "Required Documents", href: "/contact#required-documents" }
   ],
   committees: [
-    { name: "Committees & Cell List", href: "/committees" },
-    { name: "Anti Ragging Cell", href: "/anti-ragging" },
-    { name: "Press And Media Cell", href: "/press-media" },
-    { name: "WGV Cell", href: "/women-grievance" },
-    { name: "IPR Cell", href: "/ipr" },
-    { name: "Student Grievance Cell", href: "/student-grievance" },
-    { name: "Legal Aide Cell", href: "/legal-aide" }
+    { name: "Committees & Cell List", href: "/campus-life#cells-list" },
+    { name: "Anti Ragging Cell", href: "/campus-life#anti-ragging" },
+    { name: "Press And Media Cell", href: "/campus-life#press-media" },
+    { name: "WGV Cell", href: "/campus-life#wgv-cell" },
+    { name: "IPR Cell", href: "/campus-life#ipr-cell" },
+    { name: "Student Grievance Cell", href: "/campus-life#grievance-cell" }
   ],
   cells: [
-    { name: "SEDG Cell", href: "/sedg-cell" },
-    { name: "National Cadet Corps (NCC)", href: "/ncc" },
-    { name: "National Service Scheme (NSS)", href: "/nss" },
-    { name: "Research Cell", href: "#research" },
-    { name: "UGC Cell", href: "/ugc-cell" },
-    { name: "Internal Complaints (ICC)", href: "/internal-complaints" }
+    { name: "SEDG Cell", href: "/campus-life#sedg-cell" },
+    { name: "National Cadet Corps (NCC)", href: "/campus-life#ncc" },
+    { name: "National Service Scheme (NSS)", href: "/campus-life#nss" },
+    { name: "Research Cell", href: "/campus-life#research-cell" },
+    { name: "UGC Cell", href: "/campus-life#ugc-cell" },
+    { name: "Internal Complaints (ICC)", href: "/campus-life#icc-cell" }
   ]
 };
 
 const researchLinks = [
-  { name: "Journal Publication", href: "/journal-publication" },
-  { name: "Books Publication", href: "/books-publication" },
-  { name: "Patents Filed", href: "/patents-filed" },
-  { name: "Seminars & Conferences", href: "/seminars-conferences" }
+  { name: "Journal Publication", href: "/campus-life#research-journals" },
+  { name: "Books Publication", href: "/campus-life#research-books" },
+  { name: "Patents Filed", href: "/campus-life#research-patents" },
+  { name: "Seminars & Conferences", href: "/campus-life#research-seminars" }
 ];
 
 const conferenceLinks = [
-  { name: "NCRISD-2026 Brochure", href: "/conference-brochure" },
-  { name: "NCRISD-2026 Registration", href: "/conference-registration" }
+  { name: "NCRISD-2026 Brochure", href: "/campus-life#ncrisd-brochure" },
+  { name: "NCRISD-2026 Registration", href: "/campus-life#ncrisd-registration" }
 ];
 
 const marqueeItems = [
@@ -83,9 +82,18 @@ const marqueeItems = [
 ];
 
 export default function Header() {
+  const pathname = usePathname() || "/";
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+
+  const isHome = pathname === "/";
+  const isAbout = pathname.startsWith("/about");
+  const isAdmissions = pathname.startsWith("/scholarships");
+  const isAcademics = pathname.startsWith("/academics");
+  const isInstitutions = pathname.startsWith("/institutions");
+  const isPlacements = pathname.startsWith("/placements");
+  const isContact = pathname.startsWith("/contact");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -121,7 +129,7 @@ export default function Header() {
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-1">
             <span className="opacity-85">📞 Enquiry: +91 62322 21101</span>
             <span className="opacity-85">📧 info@bhartiuniversity.org</span>
-            <a href="/erp-login" className="text-burgundy font-bold hover:text-gold hover:underline flex items-center gap-1">
+            <a href="/admin" className="text-burgundy font-bold hover:text-gold hover:underline flex items-center gap-1">
               <User className="w-3.5 h-3.5" /> ERP LOGIN
             </a>
           </div>
@@ -137,35 +145,39 @@ export default function Header() {
         }`}
       >
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex justify-between items-center">
-          {/* Logo with native horizontal dimensions - fully readable */}
-          <a href="#" className="flex items-center group relative">
-            {/* Light Mode Logo (logo.png) */}
+          {/* Logo with seamless crossfade transition between logo_01.webp (dark header) and logo.webp (white header) */}
+          <Link href="/" className="flex items-center group relative h-10 md:h-12 w-48 md:w-56 overflow-hidden">
             <img
-              src="/img/logo.png"
-              alt="Bharti Vishwavidyalaya Logo"
-              className={`h-10 md:h-12 w-auto object-contain transition-all duration-500 group-hover:scale-102 ${
-                scrolled ? "opacity-100 scale-100" : "opacity-0 pointer-events-none scale-95"
+              src="/img/logo_01.webp"
+              alt="Bharti Vishwavidyalaya Logo Dark Header"
+              className={`absolute left-0 top-1/2 -translate-y-1/2 h-10 md:h-12 w-auto object-contain transition-opacity duration-500 ease-in-out group-hover:scale-102 ${
+                scrolled ? "opacity-0 pointer-events-none" : "opacity-100"
               }`}
             />
-            {/* Dark Mode Logo (logo_1.png) */}
             <img
-              src="/img/logo_1.png"
-              alt="Bharti Vishwavidyalaya Logo"
-              className={`absolute inset-0 h-10 md:h-12 w-auto object-contain transition-all duration-500 group-hover:scale-102 ${
-                scrolled ? "opacity-0 pointer-events-none scale-95" : "opacity-100 scale-100"
+              src="/img/logo.webp"
+              alt="Bharti Vishwavidyalaya Logo White Header"
+              className={`absolute left-0 top-1/2 -translate-y-1/2 h-10 md:h-12 w-auto object-contain transition-opacity duration-500 ease-in-out group-hover:scale-102 ${
+                scrolled ? "opacity-100" : "opacity-0 pointer-events-none"
               }`}
             />
-          </a>
+          </Link>
 
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-8 font-montserrat text-xs font-bold tracking-wider">
             {/* Home */}
-            <a
-              href="#"
-              className={`hover:text-burgundy transition-colors relative py-2 ${scrolled ? "text-[#121212]" : "text-white"}`}
+            <Link
+              href="/"
+              className={`transition-all relative py-2 ${
+                isHome
+                  ? "text-burgundy font-extrabold border-b-2 border-burgundy"
+                  : scrolled
+                  ? "text-[#121212] hover:text-burgundy"
+                  : "text-white hover:text-burgundy"
+              }`}
             >
               HOME
-            </a>
+            </Link>
 
             {/* About (Mega Menu Trigger) */}
             <div
@@ -173,7 +185,15 @@ export default function Header() {
               onMouseEnter={() => setActiveDropdown("about")}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <div className={`flex items-center gap-1 transition-colors group-hover:text-burgundy ${scrolled ? "text-[#121212]" : "text-white"}`}>
+              <div
+                className={`flex items-center gap-1 transition-colors ${
+                  isAbout
+                    ? "text-burgundy font-extrabold border-b-2 border-burgundy"
+                    : scrolled
+                    ? "text-[#121212] group-hover:text-burgundy"
+                    : "text-white group-hover:text-burgundy"
+                }`}
+              >
                 ABOUT <ChevronDown className="w-3.5 h-3.5 opacity-80" />
               </div>
               <AnimatePresence>
@@ -238,7 +258,15 @@ export default function Header() {
               onMouseEnter={() => setActiveDropdown("admissions")}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <div className={`flex items-center gap-1 transition-colors group-hover:text-burgundy ${scrolled ? "text-[#121212]" : "text-white"}`}>
+              <div
+                className={`flex items-center gap-1 transition-colors ${
+                  isAdmissions
+                    ? "text-burgundy font-extrabold border-b-2 border-burgundy"
+                    : scrolled
+                    ? "text-[#121212] group-hover:text-burgundy"
+                    : "text-white group-hover:text-burgundy"
+                }`}
+              >
                 ADMISSIONS & CELLS <ChevronDown className="w-3.5 h-3.5 opacity-80" />
               </div>
               <AnimatePresence>
@@ -363,16 +391,28 @@ export default function Header() {
 
             {/* Placements */}
             <a
-              href="#placements"
-              className={`hover:text-burgundy transition-colors py-2 ${scrolled ? "text-[#121212]" : "text-white"}`}
+              href="/placements"
+              className={`transition-all py-2 ${
+                isPlacements
+                  ? "text-burgundy font-extrabold border-b-2 border-burgundy"
+                  : scrolled
+                  ? "text-[#121212] hover:text-burgundy"
+                  : "text-white hover:text-burgundy"
+              }`}
             >
               PLACEMENTS
             </a>
 
             {/* Contact */}
             <a
-              href="#contact"
-              className={`hover:text-burgundy transition-colors py-2 ${scrolled ? "text-[#121212]" : "text-white"}`}
+              href="/contact"
+              className={`transition-all py-2 ${
+                isContact
+                  ? "text-burgundy font-extrabold border-b-2 border-burgundy"
+                  : scrolled
+                  ? "text-[#121212] hover:text-burgundy"
+                  : "text-white hover:text-burgundy"
+              }`}
             >
               CONTACT
             </a>
@@ -384,7 +424,7 @@ export default function Header() {
               <Search className="w-4.5 h-4.5" />
             </button>
             <a
-              href="/fee-structure"
+              href="/contact"
               className="hidden sm:inline-block px-5 py-2.5 rounded-full font-montserrat text-[10px] font-bold tracking-widest text-center shadow-lg transition-all duration-300 bg-burgundy text-white hover:bg-burgundy-light"
             >
               APPLY NOW
@@ -432,37 +472,37 @@ export default function Header() {
           >
             <div className="flex justify-between items-center mb-10">
               <div className="flex items-center">
-                <img src="/img/logo_1.png" alt="Bharti Vishwavidyalaya" className="h-9 w-auto object-contain" />
+                <img src="/img/logo.png" alt="Bharti Vishwavidyalaya" className="h-9 w-auto object-contain" />
               </div>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-white hover:text-[#d4af37] p-2 rounded-full hover:bg-white/5 transition-colors"
+                className="text-[#FAF8F5] hover:text-[#d4af37] p-2 rounded-full hover:bg-white/5 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <nav className="flex flex-col gap-5 font-outfit text-lg font-bold text-white overflow-y-auto max-h-[60vh] pr-2 scrollbar-none">
-              <a href="#" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#d4af37] transition-colors py-1">
+              <a href="/" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#d4af37] transition-colors py-1">
                 HOME
               </a>
               
               <div className="border-t border-white/5 pt-4">
                 <span className="text-[#d4af37] text-[10px] font-montserrat font-bold tracking-widest block mb-2 uppercase">ABOUT THE VISHWAVIDYALAYA</span>
                 <div className="grid grid-cols-1 gap-1.5 pl-3 text-sm font-medium text-white/70">
-                  <a href="/about-bu" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">About BU</a>
-                  <a href="/vision-mission" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">Vision & Mission</a>
-                  <a href="/administration" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">Administration Portal</a>
-                  <a href="/fee-structure" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">Fee Structure</a>
+                  <a href="/about" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">About BU</a>
+                  <a href="/about#vision-mission" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">Vision & Mission</a>
+                  <a href="/admin" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">Administration Portal</a>
+                  <a href="/about#fee-regulation" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">Fee Regulation</a>
                 </div>
               </div>
 
               <div className="border-t border-white/5 pt-4">
                 <span className="text-[#d4af37] text-[10px] font-montserrat font-bold tracking-widest block mb-2 uppercase">RESEARCH & NCRISD</span>
                 <div className="grid grid-cols-1 gap-1.5 pl-3 text-sm font-medium text-white/70">
-                  <a href="/journal-publication" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">Publications List</a>
-                  <a href="/patents-filed" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">Patents Directory</a>
-                  <a href="/conference-brochure" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">NCRISD-2026 Brochure</a>
+                  <a href="#research" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">Publications List</a>
+                  <a href="#research" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">Patents Directory</a>
+                  <a href="#news" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-1">NCRISD-2026 Brochure</a>
                 </div>
               </div>
 
@@ -473,7 +513,7 @@ export default function Header() {
               </div>
 
               <div className="border-t border-white/5 pt-4">
-                <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#d4af37] transition-colors block py-1">
+                <a href="#footer" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#d4af37] transition-colors block py-1">
                   CONTACT US
                 </a>
               </div>
@@ -481,7 +521,7 @@ export default function Header() {
 
             <div className="mt-auto flex flex-col gap-4">
               <a
-                href="/erp-login"
+                href="/admin"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full bg-white/10 hover:bg-white/20 text-white font-montserrat text-xs font-semibold py-4 rounded-xl text-center transition-all"
               >

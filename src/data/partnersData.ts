@@ -12,7 +12,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Tata Consultancy Services",
     shortName: "TCS",
     domain: "tcs.com",
-    logo: "https://logo.clearbit.com/tcs.com",
+    logo: "https://www.google.com/s2/favicons?domain=tcs.com&sz=128",
     category: "TECH",
     brandColor: "#000000"
   },
@@ -20,7 +20,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Wipro Limited",
     shortName: "Wipro",
     domain: "wipro.com",
-    logo: "https://logo.clearbit.com/wipro.com",
+    logo: "https://www.google.com/s2/favicons?domain=wipro.com&sz=128",
     category: "TECH",
     brandColor: "#1A5B9C"
   },
@@ -28,7 +28,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Infosys Limited",
     shortName: "Infosys",
     domain: "infosys.com",
-    logo: "https://logo.clearbit.com/infosys.com",
+    logo: "https://www.google.com/s2/favicons?domain=infosys.com&sz=128",
     category: "TECH",
     brandColor: "#007CC3"
   },
@@ -36,7 +36,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Tech Mahindra",
     shortName: "Tech Mahindra",
     domain: "techmahindra.com",
-    logo: "https://logo.clearbit.com/techmahindra.com",
+    logo: "https://www.google.com/s2/favicons?domain=techmahindra.com&sz=128",
     category: "TECH",
     brandColor: "#E31837"
   },
@@ -44,7 +44,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Cognizant Technology",
     shortName: "Cognizant",
     domain: "cognizant.com",
-    logo: "https://logo.clearbit.com/cognizant.com",
+    logo: "https://www.google.com/s2/favicons?domain=cognizant.com&sz=128",
     category: "TECH",
     brandColor: "#0033A0"
   },
@@ -52,7 +52,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Accenture",
     shortName: "Accenture",
     domain: "accenture.com",
-    logo: "https://logo.clearbit.com/accenture.com",
+    logo: "https://www.google.com/s2/favicons?domain=accenture.com&sz=128",
     category: "TECH",
     brandColor: "#A100FF"
   },
@@ -60,7 +60,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "IBM India",
     shortName: "IBM",
     domain: "ibm.com",
-    logo: "https://logo.clearbit.com/ibm.com",
+    logo: "https://www.google.com/s2/favicons?domain=ibm.com&sz=128",
     category: "TECH",
     brandColor: "#052FAD"
   },
@@ -68,7 +68,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "HCL Technologies",
     shortName: "HCLTech",
     domain: "hcltech.com",
-    logo: "https://logo.clearbit.com/hcltech.com",
+    logo: "https://www.google.com/s2/favicons?domain=hcltech.com&sz=128",
     category: "TECH",
     brandColor: "#005696"
   },
@@ -76,7 +76,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Reliance Jio",
     shortName: "Jio",
     domain: "jio.com",
-    logo: "https://logo.clearbit.com/jio.com",
+    logo: "https://www.google.com/s2/favicons?domain=jio.com&sz=128",
     category: "TECH",
     brandColor: "#0A2540"
   },
@@ -84,7 +84,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Suzuki Motors",
     shortName: "Suzuki",
     domain: "marutisuzuki.com",
-    logo: "https://logo.clearbit.com/marutisuzuki.com",
+    logo: "https://www.google.com/s2/favicons?domain=marutisuzuki.com&sz=128",
     category: "AUTO",
     brandColor: "#003A70"
   },
@@ -92,7 +92,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Ashok Leyland",
     shortName: "Ashok Leyland",
     domain: "ashokleyland.com",
-    logo: "https://logo.clearbit.com/ashokleyland.com",
+    logo: "https://www.google.com/s2/favicons?domain=ashokleyland.com&sz=128",
     category: "AUTO",
     brandColor: "#004B87"
   },
@@ -100,7 +100,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Mahindra & Mahindra",
     shortName: "Mahindra",
     domain: "mahindra.com",
-    logo: "https://logo.clearbit.com/mahindra.com",
+    logo: "https://www.google.com/s2/favicons?domain=mahindra.com&sz=128",
     category: "AUTO",
     brandColor: "#E31837"
   },
@@ -108,7 +108,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Bajaj Auto",
     shortName: "Bajaj",
     domain: "bajajauto.com",
-    logo: "https://logo.clearbit.com/bajajauto.com",
+    logo: "https://www.google.com/s2/favicons?domain=bajajauto.com&sz=128",
     category: "AUTO",
     brandColor: "#003A70"
   },
@@ -116,7 +116,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "John Deere",
     shortName: "John Deere",
     domain: "deere.com",
-    logo: "https://logo.clearbit.com/deere.com",
+    logo: "https://www.google.com/s2/favicons?domain=deere.com&sz=128",
     category: "AUTO",
     brandColor: "#367C2B"
   },
@@ -124,7 +124,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "L&T Construction",
     shortName: "L&T",
     domain: "larsentoubro.com",
-    logo: "https://logo.clearbit.com/larsentoubro.com",
+    logo: "https://www.google.com/s2/favicons?domain=larsentoubro.com&sz=128",
     category: "CONSTRUCTION",
     brandColor: "#00529B"
   },
@@ -132,7 +132,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Genpact",
     shortName: "Genpact",
     domain: "genpact.com",
-    logo: "https://logo.clearbit.com/genpact.com",
+    logo: "https://www.google.com/s2/favicons?domain=genpact.com&sz=128",
     category: "TECH",
     brandColor: "#003366"
   },
@@ -140,7 +140,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Flipkart",
     shortName: "Flipkart",
     domain: "flipkart.com",
-    logo: "https://logo.clearbit.com/flipkart.com",
+    logo: "https://www.google.com/s2/favicons?domain=flipkart.com&sz=128",
     category: "RETAIL",
     brandColor: "#2874F0"
   },
@@ -148,7 +148,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Paytm",
     shortName: "Paytm",
     domain: "paytm.com",
-    logo: "https://logo.clearbit.com/paytm.com",
+    logo: "https://www.google.com/s2/favicons?domain=paytm.com&sz=128",
     category: "FINANCE",
     brandColor: "#002E6E"
   },
@@ -156,7 +156,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "SBI Life Insurance",
     shortName: "SBI Life",
     domain: "sbilife.co.in",
-    logo: "https://logo.clearbit.com/sbilife.co.in",
+    logo: "https://www.google.com/s2/favicons?domain=sbilife.co.in&sz=128",
     category: "FINANCE",
     brandColor: "#0083CA"
   },
@@ -164,7 +164,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "IDBI Bank",
     shortName: "IDBI Bank",
     domain: "idbibank.in",
-    logo: "https://logo.clearbit.com/idbibank.in",
+    logo: "https://www.google.com/s2/favicons?domain=idbibank.in&sz=128",
     category: "FINANCE",
     brandColor: "#00563F"
   },
@@ -172,7 +172,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Bandhan Bank",
     shortName: "Bandhan",
     domain: "bandhanbank.com",
-    logo: "https://logo.clearbit.com/bandhanbank.com",
+    logo: "https://www.google.com/s2/favicons?domain=bandhanbank.com&sz=128",
     category: "FINANCE",
     brandColor: "#A6192E"
   },
@@ -180,7 +180,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "AU Small Finance Bank",
     shortName: "AU Bank",
     domain: "aubank.in",
-    logo: "https://logo.clearbit.com/aubank.in",
+    logo: "https://www.google.com/s2/favicons?domain=aubank.in&sz=128",
     category: "FINANCE",
     brandColor: "#6A2B85"
   },
@@ -188,7 +188,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Apollo Pharmacy",
     shortName: "Apollo",
     domain: "apollopharmacy.in",
-    logo: "https://logo.clearbit.com/apollopharmacy.in",
+    logo: "https://www.google.com/s2/favicons?domain=apollopharmacy.in&sz=128",
     category: "PHARMA",
     brandColor: "#00A859"
   },
@@ -196,7 +196,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Lupin Pharmaceuticals",
     shortName: "Lupin",
     domain: "lupin.com",
-    logo: "https://logo.clearbit.com/lupin.com",
+    logo: "https://www.google.com/s2/favicons?domain=lupin.com&sz=128",
     category: "PHARMA",
     brandColor: "#0066B2"
   },
@@ -204,7 +204,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Macleods Pharma",
     shortName: "Macleods",
     domain: "macleodspharma.com",
-    logo: "https://logo.clearbit.com/macleodspharma.com",
+    logo: "https://www.google.com/s2/favicons?domain=macleodspharma.com&sz=128",
     category: "PHARMA",
     brandColor: "#E30613"
   },
@@ -212,7 +212,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Eureka Forbes",
     shortName: "Eureka Forbes",
     domain: "eurekaforbes.com",
-    logo: "https://logo.clearbit.com/eurekaforbes.com",
+    logo: "https://www.google.com/s2/favicons?domain=eurekaforbes.com&sz=128",
     category: "RETAIL",
     brandColor: "#00529B"
   },
@@ -220,7 +220,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Justdial",
     shortName: "Justdial",
     domain: "justdial.com",
-    logo: "https://logo.clearbit.com/justdial.com",
+    logo: "https://www.google.com/s2/favicons?domain=justdial.com&sz=128",
     category: "TECH",
     brandColor: "#FF6600"
   },
@@ -228,7 +228,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Randstad India",
     shortName: "Randstad",
     domain: "randstad.in",
-    logo: "https://logo.clearbit.com/randstad.in",
+    logo: "https://www.google.com/s2/favicons?domain=randstad.in&sz=128",
     category: "TECH",
     brandColor: "#0088CC"
   },
@@ -236,7 +236,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Vivo Smartphone",
     shortName: "Vivo",
     domain: "vivo.com",
-    logo: "https://logo.clearbit.com/vivo.com",
+    logo: "https://www.google.com/s2/favicons?domain=vivo.com&sz=128",
     category: "TECH",
     brandColor: "#008CD6"
   },
@@ -244,7 +244,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
     name: "Suzlon Energy",
     shortName: "Suzlon",
     domain: "suzlon.com",
-    logo: "https://logo.clearbit.com/suzlon.com",
+    logo: "https://www.google.com/s2/favicons?domain=suzlon.com&sz=128",
     category: "CONSTRUCTION",
     brandColor: "#007A33"
   }

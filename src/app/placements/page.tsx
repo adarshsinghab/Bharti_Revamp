@@ -1,43 +1,84 @@
 "use client";
 
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
-import { Briefcase, Award, Building, UserCheck, CheckCircle2, Rocket, ArrowRight } from "lucide-react";
+import { Briefcase, Award, CheckCircle2, Rocket, ArrowRight, Building2, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { PARTNER_LOGOS, PartnerLogo } from "@/data/partnersData";
 
-const PLACEMENT_PARTNERS = [
-  "Ashok Leyland", "Suzuki Motors", "Tata Consultancy Services (TCS)", "Wipro Ltd.", "L&T Construction",
-  "Genpact", "Macleods Pharmaceuticals", "BOC India Ltd.", "Hira Power & Steel", "HCL Infosystems Ltd",
-  "John Deere", "IDBI Bank Limited", "SBI Life Insurance", "I.B Group", "Vivo Smart Phone",
-  "Maintec Technologies", "Mahindra & Mahindra Ltd.", "Bajaj Motors Ltd.", "Jindal Electrical", "Jain Irrigation Systems Ltd.",
-  "Suzlon Energy Ltd.", "Yazaki Group", "Promac Advisors", "Dhoot Transmissions", "Silverton Structures",
-  "Shriram Pistons & Rings", "Varroc Engineering", "Michigan Tyres", "GSS Projects", "Justdial Limited",
-  "Blue Mount Appliances", "Ronch Polymer", "Reliance Jio Infocomm", "Eureka Forbes Ltd.", "Aditya Biotech Lab",
-  "Bhive-Design", "Layam Flexi Solutions", "QSpiders", "Shree Ram Techno Solutions", "Infinite Computer Solutions",
-  "Beyond Alliance", "UFlex Ltd.", "Marelli Motherson", "Bandhan Bank", "Advik Hi-Tech",
-  "Ojas Agro Chemicals", "Sandeep Engineering", "Flash Viven Machining", "Apollo Pharmacy", "Kalpatru Power Transmission",
-  "Pricol Pune", "Nature Touch Landscape", "Arts Watermatics", "AU Small Finance Bank", "Randstad",
-  "Technotask", "Flipkart", "Paytm", "BM Shah", "AgroStar", "MedPlus", "Sybrox", "Square", "Sun Agro"
-];
+function PartnerLogoCard({ partner, index }: { partner: PartnerLogo; index: number }) {
+  const [imgError, setImgError] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: Math.min(index * 0.02, 0.3) }}
+      className="bg-white rounded-2xl p-4 border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-burgundy/30 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-between text-center group cursor-pointer depth-card relative overflow-hidden"
+    >
+      {/* Top Category Badge */}
+      <span className="text-[8px] font-montserrat font-extrabold text-gold-dark bg-gold/10 px-2 py-0.5 rounded-full uppercase tracking-wider mb-3">
+        {partner.category}
+      </span>
+
+      {/* Corporate Logo / Fallback Badge */}
+      <div className="w-14 h-14 rounded-2xl bg-[#f8fafc] border border-[#E2E8F0] flex items-center justify-center p-2.5 mb-3 group-hover:scale-110 transition-transform duration-300 shadow-xs">
+        {!imgError ? (
+          <img
+            src={partner.logo}
+            alt={partner.name}
+            onError={() => setImgError(true)}
+            className="w-full h-full object-contain filter group-hover:grayscale-0 transition-all duration-300"
+          />
+        ) : (
+          <div
+            className="w-full h-full rounded-xl flex items-center justify-center font-montserrat text-xs font-extrabold text-white shadow-xs"
+            style={{ backgroundColor: partner.brandColor || "#f60401" }}
+          >
+            {partner.shortName.substring(0, 2).toUpperCase()}
+          </div>
+        )}
+      </div>
+
+      {/* Company Name */}
+      <span className="font-outfit text-xs font-extrabold text-[#0f172a] group-hover:text-burgundy transition-colors leading-snug">
+        {partner.name}
+      </span>
+
+      {/* Decorative hover accent */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-burgundy/0 group-hover:bg-burgundy transition-colors duration-300" />
+    </motion.div>
+  );
+}
 
 export default function PlacementsPage() {
+  const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
+
+  const categories = ["ALL", "TECH", "AUTO", "FINANCE", "PHARMA", "CONSTRUCTION", "RETAIL"];
+
+  const filteredPartners = selectedCategory === "ALL"
+    ? PARTNER_LOGOS
+    : PARTNER_LOGOS.filter((p) => p.category === selectedCategory);
+
   return (
     <SmoothScroll>
       <Header />
-      <main className="min-h-screen bg-[#FAF8F5] text-[#121212] pt-36 md:pt-40 pb-20">
+      <main className="min-h-screen bg-[#FCFAF7] text-[#0f172a] pt-36 md:pt-40 pb-20">
         
         {/* Hero Section */}
-        <section className="bg-gradient-to-b from-[#FAF8F5] via-[#FCFAF7] to-[#F3EFEA] text-[#0f172a] py-16 px-6 md:px-12 lg:px-16 relative overflow-hidden border-b border-[#EAEAEA] mb-12">
+        <section className="bg-gradient-to-b from-[#FCFAF7] via-[#f8fafc] to-[#F3EFEA] text-[#0f172a] py-16 px-6 md:px-12 lg:px-16 relative overflow-hidden border-b border-[#E2E8F0] mb-12">
           <div className="max-w-[1600px] mx-auto relative z-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-burgundy/10 text-burgundy text-xs font-montserrat font-bold tracking-widest uppercase mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-burgundy/10 text-burgundy text-xs font-montserrat font-bold tracking-widest uppercase mb-4 border border-burgundy/10">
               <Briefcase className="w-4 h-4" /> Training & Corporate Placements • Prospectus 2026
             </div>
-            <h1 className="font-outfit text-3xl md:text-5xl font-extrabold tracking-tight text-[#5b0e2d] mb-4">
+            <h1 className="font-outfit text-3xl md:text-5xl font-extrabold tracking-tight text-[#0f172a] mb-4">
               Career & Corporate Placements
             </h1>
             <p className="font-outfit text-sm md:text-base text-gray-600 font-light max-w-2xl leading-relaxed">
-              Empowering 5,000+ alumni globally through rigorous technical training, industry internship pipelines, and multi-national corporate placement drives.
+              Empowering 5,000+ alumni globally through technical training, industry internship pipelines, and multi-national corporate recruitment drives.
             </p>
           </div>
         </section>
@@ -74,7 +115,7 @@ export default function PlacementsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
             {/* Cell Functions */}
-            <div className="lg:col-span-7 bg-white rounded-3xl p-8 border border-[#EAEAEA] shadow-sm">
+            <div className="lg:col-span-7 bg-white rounded-3xl p-8 border border-[#E2E8F0] shadow-sm">
               <h2 className="font-outfit text-2xl font-extrabold text-[#0f172a] mb-4">
                 Career Guidance & Counseling Cell Functions
               </h2>
@@ -100,20 +141,20 @@ export default function PlacementsPage() {
 
             {/* Quick Stats Grid */}
             <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-              <div className="bg-[#5b0e2d]/5 rounded-2xl p-6 border border-[#5b0e2d]/10 flex flex-col justify-center text-center">
-                <span className="font-outfit text-3xl md:text-4xl font-extrabold text-[#5b0e2d] mb-1">60+</span>
+              <div className="bg-burgundy/5 rounded-2xl p-6 border border-burgundy/10 flex flex-col justify-center text-center">
+                <span className="font-outfit text-3xl md:text-4xl font-extrabold text-burgundy mb-1">120+</span>
                 <span className="font-montserrat text-xs font-bold text-gray-600 uppercase">Recruitment Partners</span>
               </div>
-              <div className="bg-[#5b0e2d]/5 rounded-2xl p-6 border border-[#5b0e2d]/10 flex flex-col justify-center text-center">
-                <span className="font-outfit text-3xl md:text-4xl font-extrabold text-[#5b0e2d] mb-1">5000+</span>
+              <div className="bg-burgundy/5 rounded-2xl p-6 border border-burgundy/10 flex flex-col justify-center text-center">
+                <span className="font-outfit text-3xl md:text-4xl font-extrabold text-burgundy mb-1">5000+</span>
                 <span className="font-montserrat text-xs font-bold text-gray-600 uppercase">Alumni Worldwide</span>
               </div>
-              <div className="bg-[#5b0e2d]/5 rounded-2xl p-6 border border-[#5b0e2d]/10 flex flex-col justify-center text-center">
-                <span className="font-outfit text-3xl md:text-4xl font-extrabold text-[#5b0e2d] mb-1">25+</span>
+              <div className="bg-burgundy/5 rounded-2xl p-6 border border-burgundy/10 flex flex-col justify-center text-center">
+                <span className="font-outfit text-3xl md:text-4xl font-extrabold text-burgundy mb-1">25+</span>
                 <span className="font-montserrat text-xs font-bold text-gray-600 uppercase">Years Legacy</span>
               </div>
-              <div className="bg-[#5b0e2d]/5 rounded-2xl p-6 border border-[#5b0e2d]/10 flex flex-col justify-center text-center">
-                <span className="font-outfit text-3xl md:text-4xl font-extrabold text-[#5b0e2d] mb-1">100%</span>
+              <div className="bg-burgundy/5 rounded-2xl p-6 border border-burgundy/10 flex flex-col justify-center text-center">
+                <span className="font-outfit text-3xl md:text-4xl font-extrabold text-burgundy mb-1">100%</span>
                 <span className="font-montserrat text-xs font-bold text-gray-600 uppercase">Placement Support</span>
               </div>
             </div>
@@ -121,41 +162,54 @@ export default function PlacementsPage() {
           </div>
         </div>
 
-        {/* Corporate Recruitment Partners Marquee / Grid */}
+        {/* Animated Corporate Recruitment Partners Logo Showcase Grid */}
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16">
-          <div className="text-center mb-8">
-            <h2 className="font-outfit text-2xl md:text-3xl font-extrabold text-[#0f172a] mb-2">
-              Our Esteemed Placement & Recruitment Partners
-            </h2>
-            <p className="font-outfit text-xs md:text-sm text-gray-500 font-light">
-              Companies and organizations that regularly recruit Bharti Vishwavidyalaya graduates (Prospectus p. 36)
-            </p>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8">
+            <div>
+              <span className="font-montserrat text-[10px] font-bold text-gold-dark tracking-[0.25em] uppercase block mb-2 flex items-center gap-1.5">
+                <Building2 className="w-3.5 h-3.5 text-burgundy" /> CORPORATE NETWORK
+              </span>
+              <h2 className="font-outfit text-2xl md:text-4xl font-extrabold text-[#0f172a]">
+                Our Esteemed Placement & Recruitment Partners
+              </h2>
+            </div>
+
+            {/* Category Filter Pills */}
+            <div className="flex flex-wrap gap-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3.5 py-1.5 rounded-full font-montserrat text-[10px] font-bold tracking-widest uppercase transition-all duration-300 cursor-pointer ${
+                    selectedCategory === cat
+                      ? "bg-burgundy text-white shadow-sm"
+                      : "bg-white text-slate-700 hover:bg-slate-100 border border-[#E2E8F0]"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {PLACEMENT_PARTNERS.map((partner, pIdx) => (
-              <motion.div
-                key={pIdx}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: Math.min(pIdx * 0.01, 0.3) }}
-                className="bg-white rounded-xl p-3.5 border border-[#EAEAEA] shadow-2xs hover:border-[#5b0e2d]/30 hover:shadow-xs transition-all flex items-center justify-center text-center"
-              >
-                <span className="font-montserrat text-xs font-bold text-gray-700 leading-tight">
-                  {partner}
-                </span>
-              </motion.div>
+          {/* Animated Logo Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {filteredPartners.map((partner, pIdx) => (
+              <PartnerLogoCard key={partner.name + pIdx} partner={partner} index={pIdx} />
             ))}
           </div>
 
           {/* Placement Contact Footer */}
-          <div className="mt-12 text-center bg-white rounded-2xl p-6 border border-[#EAEAEA]">
-            <p className="font-outfit text-sm text-gray-600 mb-3">
+          <div className="mt-12 text-center bg-white rounded-2xl p-8 border border-[#E2E8F0] shadow-sm">
+            <h3 className="font-outfit text-lg font-extrabold text-[#0f172a] mb-2">
               Are you a corporate recruiter interested in conducting a campus placement drive?
+            </h3>
+            <p className="font-outfit text-xs text-gray-500 max-w-xl mx-auto mb-6">
+              Our Training & Placement Cell provides state-of-the-art auditorium spaces, online assessment labs, and dedicated lodging facilities for visiting recruitment teams.
             </p>
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#5b0e2d] hover:bg-[#78143c] text-white rounded-xl text-xs font-montserrat font-bold transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-burgundy hover:bg-[#cc0000] text-white rounded-full text-xs font-montserrat font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-burgundy/30 cursor-pointer"
             >
               Contact Placement Cell <ArrowRight className="w-4 h-4" />
             </a>

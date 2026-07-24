@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import {
@@ -25,6 +25,7 @@ export default function FeaturedPrograms() {
   const [selectedFaculty, setSelectedFaculty] = useState<string>("ALL PROGRAMMES");
   const [selectedLevel, setSelectedLevel] = useState<string>("ALL LEVELS");
   const [searchQuery, setSearchQuery] = useState("");
+  const [isPaused, setIsPaused] = useState(false);
   
   // Track open expanded course card names
   const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>({});
@@ -76,6 +77,40 @@ export default function FeaturedPrograms() {
       return matchFaculty && matchLevel && matchSearch;
     });
   }, [selectedFaculty, selectedLevel, searchQuery]);
+
+  // Duplicate filtered programs to allow seamless 360 infinite marquee scrolling
+  const displayPrograms = useMemo(() => {
+    if (filteredPrograms.length === 0) return [];
+    if (filteredPrograms.length < 5) {
+      return [...filteredPrograms, ...filteredPrograms, ...filteredPrograms, ...filteredPrograms];
+    }
+    return [...filteredPrograms, ...filteredPrograms];
+  }, [filteredPrograms]);
+
+  // Continuous slow marquee auto-scroll effect (paused on hover / touch)
+  useEffect(() => {
+    if (isPaused || !carouselScrollRef.current || displayPrograms.length === 0) return;
+
+    let animationFrameId: number;
+
+    const scrollStep = () => {
+      const el = carouselScrollRef.current;
+      if (el) {
+        // Slow speed (~0.45px per frame for smooth readable movement)
+        el.scrollLeft += 0.45;
+
+        // Reset scroll position seamlessly when halfway through duplicated content
+        const halfWidth = el.scrollWidth / 2;
+        if (halfWidth > 0 && el.scrollLeft >= halfWidth) {
+          el.scrollLeft -= halfWidth;
+        }
+      }
+      animationFrameId = requestAnimationFrame(scrollStep);
+    };
+
+    animationFrameId = requestAnimationFrame(scrollStep);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isPaused, displayPrograms]);
 
   return (
     <section id="programs" className="py-16 md:py-24 bg-[#f8fafc] border-b border-[#E2E8F0] overflow-hidden">
@@ -199,22 +234,26 @@ export default function FeaturedPrograms() {
           </div>
         </div>
 
-        {/* Horizontal Carousel Track Display (Closed by default, click to expand) */}
+        {/* Horizontal Marquee Auto-Scroll Carousel Track */}
         <div className="relative min-h-[320px]">
           {filteredPrograms.length > 0 ? (
             <div
               ref={carouselScrollRef}
-              className="flex gap-6 overflow-x-auto pb-8 scrollbar-none no-scrollbar scroll-smooth snap-x snap-mandatory items-start"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+              onTouchStart={() => setIsPaused(true)}
+              onTouchEnd={() => setIsPaused(false)}
+              className="flex gap-6 overflow-x-auto pb-8 scrollbar-none no-scrollbar items-start"
             >
-              {filteredPrograms.map((p, idx) => {
+              {displayPrograms.map((p, idx) => {
                 const isExpanded = !!expandedCards[p.name];
                 return (
                   <motion.div
-                    key={p.name + idx}
+                    key={p.name + "-" + idx}
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: (idx % 6) * 0.08 }}
-                    className="w-[300px] sm:w-[350px] md:w-[380px] shrink-0 snap-start bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-sm hover:shadow-2xl hover:border-burgundy/30 transition-all duration-500 flex flex-col justify-between group relative overflow-hidden depth-card"
+                    transition={{ duration: 0.5, delay: (idx % 6) * 0.05 }}
+                    className="w-[300px] sm:w-[350px] md:w-[380px] shrink-0 bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-sm hover:shadow-2xl hover:border-burgundy/30 transition-all duration-500 flex flex-col justify-between group relative overflow-hidden depth-card"
                   >
                     <div>
                       {/* Top Faculty & Accreditation Badges */}

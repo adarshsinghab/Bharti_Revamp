@@ -1,203 +1,252 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Clock, CheckCircle2, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import {
+  Clock,
+  CheckCircle2,
+  ArrowRight,
+  Search,
+  BookOpen,
+  GraduationCap,
+  Briefcase,
+  Layers
+} from "lucide-react";
+import { COURSES_DATA, FACULTIES } from "@/data/coursesData";
 
-const categories = ["IT & COMPUTER SCIENCE", "EDUCATION", "PHARMACY", "MANAGEMENT", "LAW"];
-
-const programsData: Record<string, Array<{
-  name: string;
-  duration: string;
-  accreditation: string;
-  description: string;
-  highlights: string[];
-}>> = {
-  "IT & COMPUTER SCIENCE": [
-    {
-      name: "B.Tech Computer Science Engineering",
-      duration: "4 Years (Full Time)",
-      accreditation: "AICTE Approved",
-      description: "Advanced study of software engineering, artificial intelligence, cyber security, and machine learning systems.",
-      highlights: ["AI & Data Science Labs", "Industry Internship", "GPU Server Lab access"]
-    },
-    {
-      name: "Bachelor of Computer Applications (BCA)",
-      duration: "3 Years (Full Time)",
-      accreditation: "UGC Approved",
-      description: "Foundational software application development, database management, and networking systems.",
-      highlights: ["Web Frameworks", "Mobile App Dev", "SQL Database design"]
-    }
-  ],
-  "EDUCATION": [
-    {
-      name: "Bachelor of Education (B.Ed)",
-      duration: "2 Years (Full Time)",
-      accreditation: "NCTE Recognized",
-      description: "Empowering educators with modern pedagogical techniques, student psychology, and teaching skills.",
-      highlights: ["Pedagogical Labs", "Staging Internships", "Curriculum Designing"]
-    },
-    {
-      name: "Master of Education (M.Ed)",
-      duration: "2 Years (Full Time)",
-      accreditation: "NCTE Recognized",
-      description: "Advanced research in educational administration, curriculum development, and educational psychology.",
-      highlights: ["Academic Research", "Pedagogy Innovation", "Policy Making"]
-    }
-  ],
-  "PHARMACY": [
-    {
-      name: "Bachelor of Pharmacy (B.Pharm)",
-      duration: "4 Years (Full Time)",
-      accreditation: "PCI Approved",
-      description: "Comprehensive pharmacology, medicinal chemistry, pharmaceutics, and industrial drug manufacturing.",
-      highlights: ["Advanced Chemistry Lab", "Drug Formulation research", "Hospital Internships"]
-    },
-    {
-      name: "Diploma in Pharmacy (D.Pharm)",
-      duration: "2 Years (Full Time)",
-      accreditation: "PCI Approved",
-      description: "Core pharmacy techniques, hospital distribution, and drug dispensing methodologies.",
-      highlights: ["Practical Dispensing", "Basic Pharmacology", "Store Management"]
-    }
-  ],
-  "MANAGEMENT": [
-    {
-      name: "Master of Business Administration (MBA)",
-      duration: "2 Years (Full Time)",
-      accreditation: "AICTE Approved",
-      description: "Global business strategy, financial management, executive leadership, and marketing analytics.",
-      highlights: ["Case Study Studies", "Executive Networking", "Summer Internships"]
-    },
-    {
-      name: "Bachelor of Business Administration (BBA)",
-      duration: "3 Years (Full Time)",
-      accreditation: "UGC Approved",
-      description: "Foundational business administration principles, marketing, sales, and organizational behavior.",
-      highlights: ["Startup Incubator access", "Entrepreneurship Track", "Seminar Projects"]
-    }
-  ],
-  "LAW": [
-    {
-      name: "Bachelor of Laws (LL.B)",
-      duration: "3 Years (Full Time)",
-      accreditation: "BCI Approved",
-      description: "Core Indian constitution studies, criminal law, corporate law, and advocacy techniques.",
-      highlights: ["Moot Court Trials", "Legal Aid Cell practice", "High Court Internships"]
-    },
-    {
-      name: "B.A. LL.B. (Integrated)",
-      duration: "5 Years (Full Time)",
-      accreditation: "BCI Approved",
-      description: "Comprehensive dual degree combining humanities with legal studies for professional counsel.",
-      highlights: ["Moot Court Debates", "Corporate Internship", "Constitutional Law focus"]
-    }
-  ]
-};
+const degreeLevels = ["ALL LEVELS", "Undergraduate", "Postgraduate", "Diploma", "Doctoral", "Group Institution"];
 
 export default function FeaturedPrograms() {
-  const [activeTab, setActiveTab] = useState(categories[0]);
+  const [selectedFaculty, setSelectedFaculty] = useState<string>("ALL PROGRAMMES");
+  const [selectedLevel, setSelectedLevel] = useState<string>("ALL LEVELS");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredPrograms = useMemo(() => {
+    return COURSES_DATA.filter((p) => {
+      // Faculty filter
+      const matchFaculty =
+        selectedFaculty === "ALL PROGRAMMES" || p.faculty === selectedFaculty;
+
+      // Degree level filter
+      const matchLevel =
+        selectedLevel === "ALL LEVELS" || p.category === selectedLevel;
+
+      // Search query filter
+      const q = searchQuery.toLowerCase().trim();
+      const matchSearch =
+        !q ||
+        p.name.toLowerCase().includes(q) ||
+        p.faculty.toLowerCase().includes(q) ||
+        p.eligibility.toLowerCase().includes(q) ||
+        (p.specializations && p.specializations.some((s) => s.toLowerCase().includes(q))) ||
+        (p.careerOpportunities && p.careerOpportunities.some((c) => c.toLowerCase().includes(q)));
+
+      return matchFaculty && matchLevel && matchSearch;
+    });
+  }, [selectedFaculty, selectedLevel, searchQuery]);
 
   return (
-    <section id="programs" className="py-14 md:py-18 bg-[#f8fafc] border-b border-[#E2E8F0]">
+    <section id="programs" className="py-16 md:py-24 bg-[#f8fafc] border-b border-[#E2E8F0]">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 mb-10">
           <div>
             <span className="font-montserrat text-[11px] font-bold text-gold-dark tracking-[0.25em] uppercase block mb-2.5">
-              ACADEMIC OFFERINGS
+              ACADEMIC OFFERINGS & DEPARTMENTS
             </span>
-            <h2 className="font-outfit text-3xl md:text-4xl font-extrabold text-[#0f172a] tracking-tight leading-tight">
-              Featured Programs & Courses
+            <h2 className="font-outfit text-3xl md:text-5xl font-extrabold text-[#0f172a] tracking-tight leading-tight">
+              Official Degree Programs & Faculties
             </h2>
           </div>
-          <p className="font-outfit text-xs text-gray-500 font-light leading-relaxed max-w-sm">
-            Our curriculum is designed in collaboration with top corporate leaders and academic researchers to prepare students for the global marketplace.
-          </p>
+          
+          <div className="w-full lg:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            {/* Search Input */}
+            <div className="relative w-full sm:w-80">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search courses, B.Tech, MBA, Law..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-white border border-[#E2E8F0] rounded-full pl-11 pr-4 py-3 text-xs font-outfit text-[#0f172a] placeholder-gray-400 focus:outline-none focus:border-burgundy/50 focus:ring-2 focus:ring-burgundy/10 shadow-sm transition-all"
+              />
+            </div>
+            
+            <div className="bg-white border border-[#E2E8F0] px-4 py-3 rounded-full flex items-center justify-center gap-2 shadow-sm text-xs font-montserrat font-bold text-slate-700">
+              <BookOpen className="w-4 h-4 text-burgundy" />
+              <span>{filteredPrograms.length} Courses Found</span>
+            </div>
+          </div>
         </div>
 
-        {/* Categories Tab Bar */}
-        <div className="flex flex-wrap gap-2.5 border-b border-[#E2E8F0] pb-4 mb-8">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveTab(cat)}
-              className="relative px-5 py-2 font-montserrat text-[11px] font-bold tracking-widest transition-colors duration-300 focus:outline-none cursor-pointer rounded-full"
-            >
-              <span className={`relative z-10 ${activeTab === cat ? "text-white" : "text-gray-500 hover:text-[#0f172a]"}`}>
-                {cat}
-              </span>
-              {activeTab === cat && (
-                <motion.div
-                  layoutId="activeProgramTab"
-                  className="absolute inset-0 bg-burgundy"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
-            </button>
-          ))}
+        {/* Horizontal Scrollable Faculties Tab Bar */}
+        <div className="relative mb-6">
+          <div className="flex items-center gap-2 overflow-x-auto pb-3 scrollbar-none no-scrollbar">
+            {FACULTIES.map((fac) => {
+              const isActive = selectedFaculty === fac;
+              return (
+                <button
+                  key={fac}
+                  onClick={() => setSelectedFaculty(fac)}
+                  className={`relative px-4 py-2.5 rounded-full font-montserrat text-[10px] font-bold tracking-widest uppercase transition-all duration-300 whitespace-nowrap cursor-pointer shrink-0 ${
+                    isActive
+                      ? "bg-[#0f172a] text-white shadow-md"
+                      : "bg-white text-slate-600 hover:bg-slate-100 border border-[#E2E8F0]"
+                  }`}
+                >
+                  {fac}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Tab Content Display */}
-        <div className="min-h-[300px]">
+        {/* Degree Level Filter Pills */}
+        <div className="flex items-center gap-2 flex-wrap mb-10 pb-4 border-b border-[#E2E8F0]">
+          <span className="text-[10px] font-montserrat font-bold text-gray-400 tracking-wider uppercase mr-2 flex items-center gap-1">
+            <Layers className="w-3 h-3 text-burgundy" /> DEGREE LEVEL:
+          </span>
+          {degreeLevels.map((lvl) => {
+            const isActive = selectedLevel === lvl;
+            return (
+              <button
+                key={lvl}
+                onClick={() => setSelectedLevel(lvl)}
+                className={`px-3 py-1 rounded-md font-montserrat text-[10px] font-bold transition-colors cursor-pointer ${
+                  isActive
+                    ? "bg-burgundy text-white"
+                    : "bg-slate-200/60 text-slate-700 hover:bg-slate-300/60"
+                }`}
+              >
+                {lvl}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Course Cards Grid */}
+        <div className="min-h-[400px]">
           <AnimatePresence mode="wait">
             <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 12 }}
+              key={selectedFaculty + selectedLevel + searchQuery}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {programsData[activeTab].map((p, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white border border-[#E2E8F0] rounded-2xl p-6.5 shadow-sm hover:shadow-lg hover:border-burgundy/10 depth-card transition-all duration-500 flex flex-col justify-between group relative overflow-hidden"
-                >
-                  <div>
-                    {/* Program Duration & Badge */}
-                    <div className="flex justify-between items-center mb-5">
-                      <div className="flex items-center gap-1.5 text-gray-500 text-[11px] font-bold font-montserrat tracking-wider">
-                        <Clock className="w-3.5 h-3.5" /> {p.duration}
+              {filteredPrograms.length > 0 ? (
+                filteredPrograms.map((p, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-sm hover:shadow-2xl hover:scale-[1.01] hover:-translate-y-1 depth-card transition-all duration-500 flex flex-col justify-between group relative overflow-hidden"
+                  >
+                    <div>
+                      {/* Faculty Badge & Accreditation */}
+                      <div className="flex justify-between items-start gap-2 mb-4">
+                        <span className="bg-burgundy/5 text-burgundy border border-burgundy/10 font-montserrat font-extrabold text-[9px] uppercase tracking-wider py-0.5 px-2.5 rounded-full inline-flex items-center gap-1">
+                          <GraduationCap className="w-3 h-3" /> {p.faculty}
+                        </span>
+                        
+                        <span className="bg-[#f8fafc] text-gold-dark border border-gold-dark/30 font-montserrat font-bold text-[9px] uppercase tracking-wider py-0.5 px-2 rounded shrink-0">
+                          {p.accreditation || p.category}
+                        </span>
                       </div>
-                      <span className="bg-[#f8fafc] text-gold-dark border border-gold-dark/30 font-montserrat font-bold text-[10px] uppercase tracking-wider py-0.5 px-2 rounded text-shadow-gold">
-                        {p.accreditation}
-                      </span>
+
+                      {/* Program Title */}
+                      <h3 className="font-outfit text-base font-extrabold text-[#0f172a] mb-2 leading-snug group-hover:text-burgundy transition-colors duration-300">
+                        {p.name}
+                      </h3>
+
+                      {/* Duration & Category */}
+                      <div className="flex items-center gap-3 text-slate-700 text-[11px] font-semibold font-montserrat mb-4 border-b border-[#E2E8F0] pb-3">
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-3.5 h-3.5 text-burgundy" /> {p.duration}
+                        </span>
+                        <span>•</span>
+                        <span className="text-burgundy font-bold">{p.category}</span>
+                      </div>
+
+                      {/* Eligibility */}
+                      <div className="mb-4">
+                        <span className="text-[10px] font-montserrat font-bold text-slate-900 uppercase tracking-wider block mb-1">
+                          ELIGIBILITY CRITERIA:
+                        </span>
+                        <p className="font-outfit text-[12px] text-slate-700 font-normal leading-relaxed">
+                          {p.eligibility}
+                        </p>
+                      </div>
+
+                      {/* Specializations Pills if present */}
+                      {p.specializations && p.specializations.length > 0 && (
+                        <div className="mb-4">
+                          <span className="text-[10px] font-montserrat font-bold text-slate-900 uppercase tracking-wider block mb-1.5">
+                            SPECIALIZATIONS / MAJORS:
+                          </span>
+                          <div className="flex flex-wrap gap-1.5">
+                            {p.specializations.map((s, sIdx) => (
+                              <span
+                                key={sIdx}
+                                className="bg-slate-100 text-slate-800 text-[10px] font-montserrat font-medium px-2 py-0.5 rounded"
+                              >
+                                {s}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Career Opportunities List if present */}
+                      {p.careerOpportunities && p.careerOpportunities.length > 0 && (
+                        <div className="mb-6 border-t border-[#E2E8F0] pt-3">
+                          <span className="text-[10px] font-montserrat font-bold text-slate-900 uppercase tracking-wider block mb-2 flex items-center gap-1">
+                            <Briefcase className="w-3 h-3 text-gold-dark" /> CAREER PATHWAYS:
+                          </span>
+                          <ul className="space-y-1.5">
+                            {p.careerOpportunities.map((c, cIdx) => (
+                              <li key={cIdx} className="flex items-center gap-2 text-[11px] text-slate-700 font-medium">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-burgundy shrink-0" />
+                                <span>{c}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
                     </div>
 
-                    {/* Program Title */}
-                    <h3 className="font-outfit text-base font-bold text-[#0f172a] mb-3 group-hover:text-burgundy transition-colors duration-300">
-                      {p.name}
-                    </h3>
+                    {/* Single-Tab Link Apply Trigger */}
+                    <div className="mt-4 pt-4 border-t border-[#E2E8F0]">
+                      <Link
+                        href="/scholarships"
+                        className="w-full bg-[#0f172a] hover:bg-burgundy text-white py-3 rounded-full font-montserrat text-[11px] font-bold tracking-widest text-center transition-all duration-300 flex items-center justify-center gap-2 shadow-sm cursor-pointer hover:shadow-burgundy/30"
+                      >
+                        APPLY FOR ADMISSION <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
 
-                    {/* Description */}
-                    <p className="font-outfit text-[13px] text-gray-500 font-light leading-relaxed mb-5">
-                      {p.description}
-                    </p>
-
-                    {/* Highlights Checklist */}
-                    <ul className="space-y-2 mb-6 border-t border-[#E2E8F0] pt-4.5">
-                      {p.highlights.map((h, hIdx) => (
-                        <li key={hIdx} className="flex items-center gap-2 text-[12px] text-slate-700 font-medium">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-burgundy" /> {h}
-                        </li>
-                      ))}
-                    </ul>
+                    {/* Hover border accent */}
+                    <div className="absolute inset-0 border-2 border-transparent rounded-2xl group-hover:border-burgundy/20 transition-colors duration-500 pointer-events-none" />
                   </div>
-
-                  {/* Apply Trigger */}
-                  <a
-                    href="/fee-structure"
-                    className="w-full bg-white hover:bg-burgundy text-[#0f172a] hover:text-white border border-[#E2E8F0] hover:border-burgundy py-3 rounded-full font-montserrat text-[11px] font-bold tracking-widest text-center transition-all duration-300 flex items-center justify-center gap-1.5 shadow-sm cursor-pointer hover:shadow-burgundy/20"
+                ))
+              ) : (
+                <div className="col-span-full py-16 text-center bg-white border border-[#E2E8F0] rounded-2xl p-8">
+                  <BookOpen className="w-10 h-10 text-gray-300 mx-auto mb-3" />
+                  <h3 className="font-outfit text-lg font-bold text-[#0f172a] mb-1">
+                    No matching programs found
+                  </h3>
+                  <p className="font-outfit text-xs text-gray-500 mb-4">
+                    Try adjusting your search terms or selecting "ALL PROGRAMMES".
+                  </p>
+                  <button
+                    onClick={() => { setSelectedFaculty("ALL PROGRAMMES"); setSelectedLevel("ALL LEVELS"); setSearchQuery(""); }}
+                    className="bg-burgundy text-white text-xs font-montserrat font-bold px-4 py-2 rounded-full cursor-pointer"
                   >
-                    APPLY NOW <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-
-                  {/* Hover highlight border accent */}
-                  <div className="absolute inset-0 border border-transparent rounded-2xl group-hover:border-burgundy/10 transition-colors duration-500 pointer-events-none" />
+                    RESET FILTERS
+                  </button>
                 </div>
-              ))}
+              )}
             </motion.div>
           </AnimatePresence>
         </div>

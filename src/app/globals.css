@@ -16,8 +16,8 @@
   --color-soft-neutral: #FCFAF7;
   --color-border-gray: #EAEAEA;
   
-  --animate-marquee: marquee 50s linear infinite;
-  --animate-marquee-reverse: marquee-reverse 50s linear infinite;
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 38s linear infinite;
   --animate-pulse-slow: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 
   /* Full-scale bold typography tokens */
@@ -63,6 +63,16 @@ body {
   overflow-x: clip;
   font-size: 1.0rem; /* Full 100% base typography */
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hardware acceleration & GPU rendering hints for zero stutter */
+.gpu-accelerated, .depth-card {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 
 /* Smooth Target Section Glow Highlight Animation */
@@ -82,7 +92,7 @@ body {
 }
 
 .section-target-glow {
-  animation: sectionTargetPulse 2.2s ease-in-out forwards;
+  animation: sectionTargetPulse 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Custom Lenis Smooth Scroll Styles */
@@ -130,13 +140,13 @@ body {
 /* Section Highlighting Glow Animation */
 @keyframes sectionGlowPulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.8), 0 0 0 0 rgba(91, 14, 45, 0.4);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.8), 0 0 0 0 rgba(246, 4, 1, 0.4);
     border-color: #d4af37;
     transform: scale(1.01);
   }
   50% {
-    box-shadow: 0 0 30px 10px rgba(212, 175, 55, 0.4), 0 0 20px 4px rgba(91, 14, 45, 0.3);
-    border-color: #5b0e2d;
+    box-shadow: 0 0 30px 10px rgba(212, 175, 55, 0.4), 0 0 20px 4px rgba(246, 4, 1, 0.3);
+    border-color: #f60401;
   }
   100% {
     box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
@@ -149,12 +159,11 @@ body {
   border-radius: 1.5rem;
 }
 
-
 /* Depth Card Elevation Utility */
 .depth-card {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease;
 }
 
 .depth-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
